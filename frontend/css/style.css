@@ -134,3 +134,21 @@ ul {
     margin: 0;
 }
 
+/**** COMMENT PAGE *****/
+main #commentText {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    position: absolute;
+    margin-top: 500px;
+    margin-left: 8%;
+}
+#commentText input[type=text] {
+    padding: 20px;
+}
+#sendCommentBtn {
+    height: 60px;
+    width: 100px;
+    margin-top: 10px;
+}
+
