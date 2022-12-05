@@ -3,6 +3,8 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select html element
 const ul = document.querySelector('#picList');
+const profileBtn = document.querySelector('.fa-solid.fa-user');
+const postBtn = document.querySelector('.fa-solid.fa-square-plus');
 
 // create cards
 const createFeedCards = (pics) => {
@@ -25,6 +27,18 @@ const createFeedCards = (pics) => {
     ul.appendChild(li);
   });
 };
+
+// Move to profile
+profileBtn.addEventListener('click', () => {
+  location.href = 'profile.html';
+  console.log('redirect to feed');
+});
+
+// Move to post
+postBtn.addEventListener('click', () => {
+  location.href = 'post.html';
+  console.log('redirect to post');
+});
 
 // AJAX
 const getPics = async () => {
