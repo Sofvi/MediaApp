@@ -3,6 +3,7 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
 const loginForm = document.querySelector('#login-form');
+const registerBtn = document.querySelector('#regBtn');
 
 // login
 loginForm.addEventListener('submit', async (evt) => {
@@ -27,4 +28,12 @@ loginForm.addEventListener('submit', async (evt) => {
     sessionStorage.setItem('user', JSON.stringify(json.user));
     location.href = 'front.html';
   }
+});
+
+// Move to register
+registerBtn.addEventListener('click', (event) => {
+  // do not submit the form anywhere (no page refresh)
+  event.preventDefault();
+  location.href = 'register.html';
+  console.log('redirect to register');
 });

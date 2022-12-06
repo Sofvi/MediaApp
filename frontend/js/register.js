@@ -3,10 +3,12 @@
 const url = "http://localhost:3000"; // change url when uploading to server
 
 // select existing html elements
-const addUserForm = document.querySelector("#add-user-form");
+const addUserForm = document.querySelector('#add-user-form');
+const loginBtn = document.querySelector('#regBtn');
+
 
 // submit register form
-addUserForm.addEventListener("submit", async (evt) => {
+addUserForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
   const data = serializeJson(addUserForm);
   const fetchOptions = {
@@ -19,4 +21,12 @@ addUserForm.addEventListener("submit", async (evt) => {
   const response = await fetch(url + "/auth/register", fetchOptions);
   const json = await response.json();
   alert(json.message);
+});
+
+// Move to login
+loginBtn.addEventListener('click', (event) => {
+  // do not submit the form anywhere (no page refresh)
+  event.preventDefault();
+  location.href = 'login.html';
+  console.log('redirect to login');
 });
