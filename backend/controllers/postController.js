@@ -6,6 +6,8 @@ const {
   addPost,
   deletePost,
 } = require("../model/postModel");
+const { validationResult } = require("express-validator");
+const { makeThumbnail, getCoordinates } = require("../utils/image");
 
 //get all posts
 
@@ -35,11 +37,28 @@ const getPostById = async (req, res) => {
   }
 };
 const createPost = async (req, res) => {
-  const newPost = req.body;
+  const errors = validationResult(req);
+  if (!req.file) {
+    res.status(400).json({ message: "file not found OR invalid file" });
+  } else if (errors.isEmpty()) {
+    const newPost = req.body;
+    await makeThumbnail(req.file.path, req.file.filename);
+    newPost.coords = JSON.stringify(await getCoordinates(req.file.path));
+
+    newPost.filename = req.file.filename;
+    console.log("Creating a new post:", newPost);
+    const result = await addPost(newPost, res);
+    res.status(201).json({ message: "post created ", userId: result });
+  } else {
+    console.log("validation errors".errors);
+    res.status(400).json({ message: "Failed to post", errors: errors.array() });
+  }
+
+  /*  const newPost = req.body;
   console.log("Creating a new post:", newPost);
   const result = await addPost(newPost, res);
   res.status(201).json({ userId: result });
-  //res.send("User added");
+  //res.send("User added"); */
 };
 const modifyPost = async (req, res) => {
   const post = req.body;

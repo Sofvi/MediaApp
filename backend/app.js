@@ -12,7 +12,7 @@ const commentRoute = require("./routes/commentRoute");
 const homePageRoute = require("./routes/homePageRoute");
 const likeRoute = require("./routes/likeRoute");
 
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static("uploads"));
 app.use(cors());

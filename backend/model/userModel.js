@@ -38,10 +38,10 @@ const getUserLogin = async (user) => {
 
 const addUser = async (user, res) => {
   try {
-    const { username, email, password, type } = user;
+    const { username, email, password } = user;
     //console.log("user:", user);
-    const sql = "INSERT INTO user VALUE (null, ?, ?, ?, ?)";
-    const values = [username, email, password, type];
+    const sql = "INSERT INTO user VALUE (null, ?, ?, ?,1)";
+    const values = [username, email, password];
     const [result] = await promisePool.execute(sql, values);
     result;
     return result;

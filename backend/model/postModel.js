@@ -29,11 +29,12 @@ const getPost = async (id, res) => {
 
 const addPost = async (user_post, res) => {
   try {
-    const { user_id, file, description, post_created, location } = user_post;
-    //console.log("user:", user);
+    const { user_id, file, description, post_created, location, coords } =
+      user_post;
+
     const sql =
-      "INSERT INTO post(user_id,file, description,post_created,file_location) VALUE (?, ?,?,?,?)";
-    const values = [user_id, file, description, post_created, location];
+      "INSERT INTO post(user_id,file, description,post_created,file_location, coords) VALUE (?,?,?,?,?,?)";
+    const values = [user_id, file, description, post_created, location, coords];
     const [result] = await promisePool.execute(sql, values);
     result;
     return result;
