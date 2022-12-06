@@ -1,9 +1,11 @@
 'use strict';
+
 const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
 const loginForm = document.querySelector('#login-form');
 const registerBtn = document.querySelector('#regBtn');
+const homeBtn = document.querySelector('#anoBtn');
 
 // login
 loginForm.addEventListener('submit', async (evt) => {
@@ -36,4 +38,12 @@ registerBtn.addEventListener('click', (event) => {
   event.preventDefault();
   location.href = 'register.html';
   console.log('redirect to register');
+});
+
+// Move to home
+homeBtn.addEventListener('click', (event) => {
+  // do not submit the form anywhere (no page refresh)
+  event.preventDefault();
+  location.href = 'feed.html';
+  console.log('redirect to home');
 });

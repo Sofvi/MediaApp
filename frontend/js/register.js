@@ -5,7 +5,7 @@ const url = "http://localhost:3000"; // change url when uploading to server
 // select existing html elements
 const addUserForm = document.querySelector('#add-user-form');
 const loginBtn = document.querySelector('#regBtn');
-
+const homeBtn = document.querySelector('#anoBtn');
 
 // submit register form
 addUserForm.addEventListener('submit', async (evt) => {
@@ -29,4 +29,12 @@ loginBtn.addEventListener('click', (event) => {
   event.preventDefault();
   location.href = 'login.html';
   console.log('redirect to login');
+});
+
+// Move to home
+homeBtn.addEventListener('click', (event) => {
+  // do not submit the form anywhere (no page refresh)
+  event.preventDefault();
+  location.href = 'feed.html';
+  console.log('redirect to home');
 });
