@@ -3,8 +3,11 @@ const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select html element
 const ul = document.querySelector('#picList');
+<<<<<<< HEAD
 const profileBtn = document.querySelector('.fa-solid.fa-user');
 const postBtn = document.querySelector('.fa-solid.fa-square-plus');
+=======
+>>>>>>> origin/Suvi
 
 // create cards
 const createFeedCards = (pics) => {
@@ -28,6 +31,7 @@ const createFeedCards = (pics) => {
   });
 };
 
+<<<<<<< HEAD
 // Move to profile
 profileBtn.addEventListener('click', () => {
   location.href = 'profile.html';
@@ -40,6 +44,8 @@ postBtn.addEventListener('click', () => {
   console.log('redirect to post');
 });
 
+=======
+>>>>>>> origin/Suvi
 // AJAX
 const getPics = async () => {
   try {
