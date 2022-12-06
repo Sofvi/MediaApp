@@ -3,7 +3,7 @@
 const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
-const loginForm = document.querySelector('#login-form');
+const loginForm = document.querySelector('#loginBtn');
 const registerBtn = document.querySelector('#regBtn');
 const homeBtn = document.querySelector('#anoBtn');
 
