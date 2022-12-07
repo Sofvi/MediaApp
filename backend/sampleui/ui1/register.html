@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="form-wrapper">
+      <h3>Register</h3>
+      <form
+        action="http://localhost:3000/auth/register"
+        method="post"
+        class="light-border"
+        id="add-user-form"
+      >
+        <input
+          class="light-border"
+          type="text"
+          name="username"
+          placeholder="Name"
+        />
+        <input
+          class="light-border"
+          type="text"
+          name="email"
+          placeholder="email"
+        />
+        <input
+          class="light-border"
+          type="password"
+          name="password"
+          placeholder="Password"
+        />
+        <button class="light-border" type="submit">Save</button>
+      </form>
+    </div>
+
+    <script src="./js/serialize.js"></script>
+    <script src="./js/register.js"></script>
+  </body>
+</html>

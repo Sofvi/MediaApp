@@ -26,16 +26,50 @@ const getPost = async (id, res) => {
     res.status(500).send(e.message);
   }
 };
+const getAllCommentsForPost = async (id, res) => {
+  try {
+    const sql =
+      "SELECT comment.user_id, comment.id, user.username, comment.content, comment.comment_date, comment.edited_date FROM comment INNER JOIN user ON user.id = comment.user_id WHERE post_id = ?";
+    const [rows] = await promisePool.query(sql, id);
+    return rows;
+  } catch (e) {
+    console.error("error", e.message);
+    res.status(500).send(e.message);
+  }
+};
+const getLikesForPost = async (id, res) => {
+  try {
+    const sql = "SELECT COUNT(*) as num_likes FROM userlike WHERE post_id = ?";
+    const [rows] = await promisePool.query(sql, id);
+    return rows;
+  } catch (e) {
+    console.error("error", e.message);
+    res.status(500).send(e.message);
+  }
+};
 
 const addPost = async (user_post, res) => {
   try {
-    const { user_id, file, description, post_created, location } = user_post;
-    //console.log("user:", user);
+    let { user_id, filename, description, post_created, location, coords } =
+      user_post;
+
+    //Database does not accept the undefined value
+    if (coords == undefined) {
+      coords = null;
+    }
     const sql =
-      "INSERT INTO post(user_id,file, description,post_created,file_location) VALUE (?, ?,?,?,?)";
-    const values = [user_id, file, description, post_created, location];
+      "INSERT INTO post(user_id,filename, description,post_created,location, coords) VALUE (?,?,?,?,?,?)";
+    const values = [
+      user_id,
+      filename,
+      description,
+      post_created,
+      location,
+      coords,
+    ];
+    console.log("Values inserted", values);
     const [result] = await promisePool.execute(sql, values);
-    result;
+    //console.log(result.insertId);
     return result;
   } catch (e) {
     console.error("error", e.message);
@@ -67,6 +101,7 @@ const deletePost = async (id, res) => {
     res.status(501).send(e.message);
   }
 };
+const getRandomPost = async();
 
 module.exports = {
   getPost,
@@ -74,4 +109,6 @@ module.exports = {
   addPost,
   editPost,
   deletePost,
+  getAllCommentsForPost,
+  getLikesForPost,
 };

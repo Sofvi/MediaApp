@@ -5,7 +5,11 @@ const {
   editPost,
   addPost,
   deletePost,
+  getAllCommentsForPost,
+  getLikesForPost,
 } = require("../model/postModel");
+const { validationResult } = require("express-validator");
+const { makeThumbnail, getCoordinates } = require("../utils/image");
 
 //get all posts
 
@@ -35,11 +39,35 @@ const getPostById = async (req, res) => {
   }
 };
 const createPost = async (req, res) => {
-  const newPost = req.body;
+  const errors = validationResult(req);
+  console.log(req.file);
+  if (!req.file) {
+    res.status(400).json({ message: "file not found OR invalid file" });
+  } else if (errors.isEmpty()) {
+    const newPost = req.body;
+    await makeThumbnail(req.file.path, req.file.filename);
+    newPost.coords = JSON.stringify(await getCoordinates(req.file.path));
+
+    newPost.filename = req.file.filename;
+    console.log(newPost.filename);
+
+    //*Trying this way to avoid the object: null prototype
+    //const post = JSON.parse(JSON.stringify(newPost));
+
+    console.log("Creating a new post:", newPost);
+    //console.log("Creating a new post:", post);
+    const result = await addPost(newPost, res);
+    res.status(201).json({ message: "post created ", userId: result });
+  } else {
+    console.log("validation errors", errors);
+    res.status(400).json({ message: "Failed to post", errors: errors.array() });
+  }
+
+  /*  const newPost = req.body;
   console.log("Creating a new post:", newPost);
   const result = await addPost(newPost, res);
   res.status(201).json({ userId: result });
-  //res.send("User added");
+  //res.send("User added"); */
 };
 const modifyPost = async (req, res) => {
   const post = req.body;
@@ -64,6 +92,27 @@ const removePost = async (req, res) => {
     res.json({ message: "Post deleted successfully!!" });
   } else res.sendStatus(501);
 };
+const getPostComments = async (req, res) => {
+  const id = req.params.id;
+  const comments = await getAllCommentsForPost(id, res);
+
+  if (comments) {
+    res.json(comments);
+  } else {
+    res.status(404).send("Errorr in getting comments!!");
+  }
+};
+
+const getPostLikes = async (req, res) => {
+  const id = req.params.id;
+  const likes = await getLikesForPost(id, res);
+
+  if (likes) {
+    res.json(likes);
+  } else {
+    res.status(404).send("Errorr in getting likes!!");
+  }
+};
 
 module.exports = {
   getPostById,
@@ -71,4 +120,6 @@ module.exports = {
   createPost,
   modifyPost,
   removePost,
+  getPostComments,
+  getPostLikes,
 };

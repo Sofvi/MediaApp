@@ -7,6 +7,7 @@ const {
   checkToken,
   modifyUser,
   createUser,
+  getUsersPosts,
 } = require("../controllers/userController");
 
 router.get("/", getUsers);
@@ -32,5 +33,8 @@ router.put(
     .trim(),
   modifyUser
 );
+
+//This end point will get all the posts of user with id
+router.get("/:id/post", getUsersPosts);
 
 module.exports = router;

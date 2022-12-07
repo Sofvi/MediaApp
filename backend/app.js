@@ -12,13 +12,13 @@ const commentRoute = require("./routes/commentRoute");
 const homePageRoute = require("./routes/homePageRoute");
 const likeRoute = require("./routes/likeRoute");
 
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static("uploads"));
 app.use(cors());
 app.use(morgan("tiny"));
-app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(passport.initialize());
 
 app.use("/auth", authRoute);
