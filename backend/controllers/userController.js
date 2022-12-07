@@ -49,6 +49,20 @@ const modifyUser = async (req, res) => {
     res.sendStatus(502);
   }
 };
+<<<<<<< HEAD
+=======
+const getUsersPosts = async (req, res) => {
+  const id = req.params.id;
+  const userPosts = await userModel.getPostsOfUser(id);
+
+  if (userPosts) {
+    res.json({ userPosts });
+  } else {
+    res.status(404).send("Errorr in getting posts!!");
+  }
+};
+
+>>>>>>> binod
 const checkToken = (req, res) => {
   res.json({ user: req.user });
 };
@@ -57,5 +71,9 @@ module.exports = {
   getUser,
   createUser,
   modifyUser,
+<<<<<<< HEAD
+=======
+  getUsersPosts,
+>>>>>>> binod
   checkToken,
 };

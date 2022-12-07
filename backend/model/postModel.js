@@ -26,6 +26,7 @@ const getPost = async (id, res) => {
     res.status(500).send(e.message);
   }
 };
+<<<<<<< HEAD
 
 const addPost = async (user_post, res) => {
   try {
@@ -36,6 +37,52 @@ const addPost = async (user_post, res) => {
     const values = [user_id, file, description, post_created, location];
     const [result] = await promisePool.execute(sql, values);
     result;
+=======
+const getAllCommentsForPost = async (id, res) => {
+  try {
+    const sql =
+      "SELECT comment.user_id, comment.id, user.username, comment.content, comment.comment_date, comment.edited_date FROM comment INNER JOIN user ON user.id = comment.user_id WHERE post_id = ?";
+    const [rows] = await promisePool.query(sql, id);
+    return rows;
+  } catch (e) {
+    console.error("error", e.message);
+    res.status(500).send(e.message);
+  }
+};
+const getLikesForPost = async (id, res) => {
+  try {
+    const sql = "SELECT COUNT(*) as num_likes FROM userlike WHERE post_id = ?";
+    const [rows] = await promisePool.query(sql, id);
+    return rows;
+  } catch (e) {
+    console.error("error", e.message);
+    res.status(500).send(e.message);
+  }
+};
+
+const addPost = async (user_post, res) => {
+  try {
+    let { user_id, filename, description, post_created, location, coords } =
+      user_post;
+
+    //Database does not accept the undefined value
+    if (coords == undefined) {
+      coords = null;
+    }
+    const sql =
+      "INSERT INTO post(user_id,filename, description,post_created,location, coords) VALUE (?,?,?,?,?,?)";
+    const values = [
+      user_id,
+      filename,
+      description,
+      post_created,
+      location,
+      coords,
+    ];
+    console.log("Values inserted", values);
+    const [result] = await promisePool.execute(sql, values);
+    //console.log(result.insertId);
+>>>>>>> binod
     return result;
   } catch (e) {
     console.error("error", e.message);
@@ -67,6 +114,10 @@ const deletePost = async (id, res) => {
     res.status(501).send(e.message);
   }
 };
+<<<<<<< HEAD
+=======
+const getRandomPost = async();
+>>>>>>> binod
 
 module.exports = {
   getPost,
@@ -74,4 +125,9 @@ module.exports = {
   addPost,
   editPost,
   deletePost,
+<<<<<<< HEAD
+=======
+  getAllCommentsForPost,
+  getLikesForPost,
+>>>>>>> binod
 };

@@ -15,14 +15,22 @@ router.get("/", getComments);
 router.post(
   "/",
   body("comment_date").isDate(),
+<<<<<<< HEAD
   body("content").isLength({ min: 5 }).trim().escape(),
+=======
+  body("content").notEmpty(),
+>>>>>>> binod
   createComment
 );
 
 router.put(
   "/:id",
   body("comment_date").isDate(),
+<<<<<<< HEAD
   body("content").isLength({ min: 5 }).trim().escape(),
+=======
+  body("content").notEmpty(),
+>>>>>>> binod
   modifyComment
 );
 

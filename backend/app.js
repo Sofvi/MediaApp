@@ -12,13 +12,22 @@ const commentRoute = require("./routes/commentRoute");
 const homePageRoute = require("./routes/homePageRoute");
 const likeRoute = require("./routes/likeRoute");
 
+<<<<<<< HEAD
 const PORT = process.env.PORT || 3005;
+=======
+const PORT = process.env.PORT || 3000;
+>>>>>>> binod
 
 app.use(express.static("uploads"));
 app.use(cors());
 app.use(morgan("tiny"));
+<<<<<<< HEAD
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+=======
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+>>>>>>> binod
 app.use(passport.initialize());
 
 app.use("/auth", authRoute);

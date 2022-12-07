@@ -7,6 +7,10 @@ const {
   checkToken,
   modifyUser,
   createUser,
+<<<<<<< HEAD
+=======
+  getUsersPosts,
+>>>>>>> binod
 } = require("../controllers/userController");
 
 router.get("/", getUsers);
@@ -33,4 +37,10 @@ router.put(
   modifyUser
 );
 
+<<<<<<< HEAD
+=======
+//This end point will get all the posts of user with id
+router.get("/:id/post", getUsersPosts);
+
+>>>>>>> binod
 module.exports = router;
