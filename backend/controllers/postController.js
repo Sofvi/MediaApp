@@ -5,15 +5,11 @@ const {
   editPost,
   addPost,
   deletePost,
-<<<<<<< HEAD
-} = require("../model/postModel");
-=======
   getAllCommentsForPost,
   getLikesForPost,
 } = require("../model/postModel");
 const { validationResult } = require("express-validator");
 const { makeThumbnail, getCoordinates } = require("../utils/image");
->>>>>>> binod
 
 //get all posts
 
@@ -43,13 +39,6 @@ const getPostById = async (req, res) => {
   }
 };
 const createPost = async (req, res) => {
-<<<<<<< HEAD
-  const newPost = req.body;
-  console.log("Creating a new post:", newPost);
-  const result = await addPost(newPost, res);
-  res.status(201).json({ userId: result });
-  //res.send("User added");
-=======
   const errors = validationResult(req);
   console.log(req.file);
   if (!req.file) {
@@ -79,7 +68,6 @@ const createPost = async (req, res) => {
   const result = await addPost(newPost, res);
   res.status(201).json({ userId: result });
   //res.send("User added"); */
->>>>>>> binod
 };
 const modifyPost = async (req, res) => {
   const post = req.body;
@@ -104,8 +92,6 @@ const removePost = async (req, res) => {
     res.json({ message: "Post deleted successfully!!" });
   } else res.sendStatus(501);
 };
-<<<<<<< HEAD
-=======
 const getPostComments = async (req, res) => {
   const id = req.params.id;
   const comments = await getAllCommentsForPost(id, res);
@@ -127,7 +113,6 @@ const getPostLikes = async (req, res) => {
     res.status(404).send("Errorr in getting likes!!");
   }
 };
->>>>>>> binod
 
 module.exports = {
   getPostById,
@@ -135,9 +120,6 @@ module.exports = {
   createPost,
   modifyPost,
   removePost,
-<<<<<<< HEAD
-=======
   getPostComments,
   getPostLikes,
->>>>>>> binod
 };

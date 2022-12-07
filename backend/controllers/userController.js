@@ -49,8 +49,6 @@ const modifyUser = async (req, res) => {
     res.sendStatus(502);
   }
 };
-<<<<<<< HEAD
-=======
 const getUsersPosts = async (req, res) => {
   const id = req.params.id;
   const userPosts = await userModel.getPostsOfUser(id);
@@ -62,7 +60,6 @@ const getUsersPosts = async (req, res) => {
   }
 };
 
->>>>>>> binod
 const checkToken = (req, res) => {
   res.json({ user: req.user });
 };
@@ -71,9 +68,6 @@ module.exports = {
   getUser,
   createUser,
   modifyUser,
-<<<<<<< HEAD
-=======
   getUsersPosts,
->>>>>>> binod
   checkToken,
 };
