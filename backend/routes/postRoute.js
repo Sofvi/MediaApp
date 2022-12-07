@@ -8,6 +8,9 @@ const {
   getPosts,
   modifyPost,
   removePost,
+  getPostComments,
+
+  getPostLikes,
 } = require("../controllers/postController");
 const router = require("./authRoute");
 
@@ -18,14 +21,12 @@ const fileFilter = (req, file, cb) => {
   } else {
     cb(null, false);
   }
-  console.log(file);
+  //console.log(file);
 };
 const upload = multer({ dest: "uploads/", fileFilter });
 
 router.get("/:id", getPostById);
 router.get("/", getPosts);
-//router.post("/", createPost);
-//router.put("/>id", modifyPost);
 
 //*WHEN USING THE VALIDATORS
 
@@ -45,6 +46,9 @@ router.put(
   body("location").isLength({ min: 3 }).trim().escape(),
   modifyPost
 );
+router.get("/:id/comment", getPostComments);
+
+router.get("/:id/like", getPostLikes);
 router.delete("/:id", removePost);
 
 module.exports = router;

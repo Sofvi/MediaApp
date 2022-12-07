@@ -80,6 +80,20 @@ const deleteUser = async (userId, type) => {
   }
 };
 
+//Logged in user gets the feed of the users
+const getPostsOfUser = async (id) => {
+  try {
+    const sql =
+      "SELECT id, filename, description, post_created, location, (SELECT count(likes_num) from userlike WHERE userlike.post_id = post.id) as num_likes ,(SELECT count(*) from comment WHERE comment.post_id = post.id) as num_comments, (SELECT user.username from user WHERE user.id = post.user_id) as owner FROM post WHERE post.user_id = ? ORDER BY id desc";
+    const [rows] = await promisePool.query(sql, id);
+
+    return rows;
+  } catch (e) {
+    console.error("error", e.message);
+    res.status(500).send(e.message);
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
@@ -87,4 +101,5 @@ module.exports = {
   addUser,
   modifyUser,
   deleteUser,
+  getPostsOfUser,
 };

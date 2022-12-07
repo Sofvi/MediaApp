@@ -15,14 +15,14 @@ router.get("/", getComments);
 router.post(
   "/",
   body("comment_date").isDate(),
-  body("content").isLength({ min: 5 }).trim().escape(),
+  body("content").notEmpty(),
   createComment
 );
 
 router.put(
   "/:id",
   body("comment_date").isDate(),
-  body("content").isLength({ min: 5 }).trim().escape(),
+  body("content").notEmpty(),
   modifyComment
 );
 
