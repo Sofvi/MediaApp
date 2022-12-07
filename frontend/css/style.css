@@ -7,7 +7,6 @@
 .header {
     width: 100%;
 }
-/* TravelShare */
 .topnav {
     height: 55px;
     text-align: center;
@@ -29,7 +28,7 @@
     text-align: center;
     position: absolute;
     z-index: 1;
-    height: 800px;
+    height: 100%;
 }
 .bg-image {
     background-image: url("../img/pic3.jpg");
@@ -47,6 +46,7 @@
 .loginInfo input[type=text], input[type=password] {
     width: 100%;
     margin-top: 10px;
+    font-size: 22px;
     text-align: center;
     background: rgba(255,255,255, .2);
     font-family: "Archivo Narrow", serif;
@@ -79,10 +79,6 @@
 }
 .loginInfo {
     margin: 50px 60px 0 60px;
-    height: 100%;
-}
-form {
-    height: 100%;
 }
 
  /**** FEED PAGE ****/
@@ -96,6 +92,7 @@ form {
     font-family: 'Julius Sans One', sans-serif;
 }
 .fa-square-plus {
+    margin: 10px;
     font-size: 32px;
 }
 .topnavigation h3 {
@@ -104,11 +101,15 @@ form {
     flex: 1 0 auto;
 }
 ul {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
     position: absolute;
-    padding: 10px;
     list-style-type: none;
 }
 .content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     background: #cccccc;
 }
 .bottomnav {
@@ -145,6 +146,56 @@ ul {
     border-radius: 0 20px 20px 0;
 }
 
+.card {
+    margin: 0.8rem;
+    padding: 0.5rem;
+    border: 2px solid #cccccc;
+    border-radius: 0.5rem;
+    max-width: 470px;
+    background-color: white;
+}
+
+.cardProfileImg {
+    width: 60px;
+    border-radius: 50%;
+}
+
+.cardTopDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+.cardTopDiv img, .cardTopDiv h3 {
+    padding: 8px;
+    font-family: "Archivo Narrow", serif;
+}
+
+.likes-comments {
+    display: flex;
+    flex-direction: row;
+}
+
+.likes-comments i {
+    padding: 8px;
+}
+
+.likes {
+    font-family: "Archivo Narrow", serif;
+    padding-left: 8px;
+    padding-bottom: 8px;
+}
+
+.comment {
+    border-radius: 25%;
+}
+
+#picList {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    z-index: -1;
+    background-color: rgba(246, 202, 131, 0.2);
+}
+
 /***** POST PAGE *****/
 .addPost {
     display: flex;
@@ -179,5 +230,28 @@ main #commentText {
     height: 60px;
     width: 100px;
     margin-top: 10px;
+}
+.commentContent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cardDiv {
+    padding: 4rem 0.5rem;
+}
+
+.commentDiv {
+    display: flex;
+    flex-direction: row;
+}
+
+.commentDiv input {
+    width: 100%;
+    padding: 8px;
+}
+
+.commentDiv i {
+    padding: 8px;
 }
 

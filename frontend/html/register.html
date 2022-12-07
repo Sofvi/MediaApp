@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script defer src="../js/register.js"></script>
+    <script defer src="../js/serialize.js"></script>
+    <title>Register</title>
+</head>
+<body class="login"><!--
+    <header>
+         Top title bar
+        <div class="topnav">
+            <h3>TravelShare</h3>
+        </div>
+    </header> -->
+<main class="container">
+    <h1>Register</h1>
+    <div class="loginInfo">
+        <form id="add-user-form" action="http://localhost:3005/auth/register" method="post"> <!-- add action -->
+            <label>
+                <input type="text" name="username" placeholder="Enter Username" required>
+                <label>
+                    <input type="text" name="email" placeholder="Enter Email" required>
+                </label>
+                <label>
+                    <input type="password" name="password" placeholder="Enter Password" required>
+                </label>
+                <button id="loginBtn" type="submit">Sign up</button>
+                <a href="" id="regBtn">Login</a> <br><br><br><br><br><br> <!-- add href -->
+                <a href="" id="anoBtn">Continue without an account.</a> <!-- add href -->
+        </form>
+    </div>
+</main>
+<div class="bg-image"></div>
+</body>
+</html>

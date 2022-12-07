@@ -8,18 +8,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <script defer src="../js/login.js"></script>
     <title>Login</title>
 </head>
-<body class="login"><!--
-    <header>
-         Top title bar
-        <div class="topnav">
-            <h3>TravelShare</h3>
-        </div>
-    </header> -->
+<body class="login">
     <main class="container">
         <h1>Login</h1>
-        <form action="" method="post"> <!-- add action -->
+        <form action="http://localhost:3005/auth/login" method="post">
             <div class="loginInfo">
                 <label>
                     <input type="text" placeholder="Enter Email" required>
