@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <script defer src="../js/register.js"></script>
+    <script defer src="../js/serialize.js"></script>
     <title>Register</title>
 </head>
 <body class="login"><!--
@@ -20,19 +21,21 @@
     </header> -->
     <main class="container">
         <h1>Register</h1>
-        <form action="" method="post"> <!-- add action -->
-            <div class="loginInfo">
+        <div class="loginInfo">
+            <form id="add-user-form" action="http://localhost:3005/auth/register" method="post"> <!-- add action -->
                 <label>
-                    <input type="text" placeholder="Enter Email" required>
+                    <input type="text" name="username" placeholder="Enter Username" required>
+                <label>
+                    <input type="text" name="email" placeholder="Enter Email" required>
                 </label>
                 <label>
-                    <input type="password" placeholder="Enter Password" required>
+                    <input type="password" name="password" placeholder="Enter Password" required>
                 </label>
                 <button id="loginBtn" type="submit">Sign up</button>
                 <a href="" id="regBtn">Login</a> <br><br><br><br><br><br> <!-- add href -->
                 <a href="" id="anoBtn">Continue without an account.</a> <!-- add href -->
-            </div>
-        </form>
+            </form>
+        </div>
     </main>
 <div class="bg-image"></div>
 </body>

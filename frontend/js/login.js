@@ -1,6 +1,6 @@
 'use strict';
 
-const url = 'http://localhost:3000'; // change url when uploading to server
+const url = 'http://localhost:3005'; // change url when uploading to server
 
 // select existing html elements
 const loginForm = document.querySelector('#loginBtn');
@@ -28,7 +28,7 @@ loginForm.addEventListener('submit', async (evt) => {
     // save token
     sessionStorage.setItem('token', json.token);
     sessionStorage.setItem('user', JSON.stringify(json.user));
-    location.href = 'front.html';
+    location.href = 'feed.html';
   }
 });
 

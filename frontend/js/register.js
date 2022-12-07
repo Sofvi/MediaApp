@@ -1,9 +1,9 @@
 'use strict';
 
-const url = "http://localhost:3000"; // change url when uploading to server
+const url = "http://localhost:3005"; // change url when uploading to server
 
 // select existing html elements
-const addUserForm = document.querySelector('#loginBtn');
+const addUserForm = document.querySelector('#add-user-form');
 const loginBtn = document.querySelector('#regBtn');
 const homeBtn = document.querySelector('#anoBtn');
 

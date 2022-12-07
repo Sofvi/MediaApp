@@ -16,6 +16,9 @@
   background-color: wheat;
   font-family: 'Julius Sans One', sans-serif;
 }
+.fa-solid.fa-square-plus {
+  padding-top: 8px;
+}
 /* Login text */
 .container h1 {
   margin-top: 140px;
@@ -92,7 +95,7 @@ form {
   width: 100%;
   height: 55px;
   font-size: 20px;
-  background-color: rgba(246, 202, 131, 0.8);
+  background-color: rgb(246, 202, 131);
   font-family: 'Julius Sans One', sans-serif;
 }
 .fa-square-plus {
@@ -104,11 +107,15 @@ form {
   flex: 1 0 auto;
 }
 ul {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   position: absolute;
-  padding: 10px;
   list-style-type: none;
 }
 .content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   background: #cccccc;
 }
 .bottomnav {
@@ -145,6 +152,55 @@ ul {
   border-radius: 0 20px 20px 0;
 }
 
+.card {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border: 1px solid;
+  border-color: #cccccc;
+  border-radius: 0.5rem;
+  max-width: 470px;
+}
+
+.cardProfileImg {
+  width: 60px;
+  border-radius: 50%;
+}
+
+.cardTopDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.cardTopDiv img, .cardTopDiv h3 {
+  padding: 8px;
+  font-family: "Archivo Narrow", serif;
+}
+
+.likes-comments {
+  display: flex;
+  flex-direction: row;
+}
+
+.likes-comments i {
+  padding: 8px;
+}
+
+.likes {
+  font-family: "Archivo Narrow", serif;
+  padding-left: 8px;
+  padding-bottom: 8px;
+}
+
+.comment {
+  border-radius: 25%;
+}
+
+#picList {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  z-index: -1;
+}
+
 /***** POST PAGE *****/
 .addPost {
   display: flex;
@@ -172,11 +228,40 @@ main #commentText {
   margin-top: 500px;
   margin-left: 8%;
 }
+
 #commentText input[type=text] {
   padding: 20px;
 }
+
 #sendCommentBtn {
   height: 60px;
   width: 100px;
   margin-top: 10px;
+}
+
+.commentContent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.cardDiv {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.commentDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.commentDiv input {
+  width: 100%;
+  padding: 8px;
+}
+
+.commentDiv i {
+  padding: 8px;
 }
