@@ -55,7 +55,7 @@
     border-bottom: 3px solid #949D6A;
 }
 .loginInfo input::placeholder {
-    color: black;
+    color: rgba(0, 0, 0, 0.79);
     font-weight: bold;
     font-size: 18px;
     opacity: 0.8;
@@ -132,17 +132,21 @@ ul {
     border-radius: 20px 0 0 20px;
     width: 140px;
     height: 35px;
-    padding: 6px;
+    padding: 10px;
     font-size: 17px;
 }
 .bottomnav button {
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-left: none;
+    margin-left: -8px;
     font-size: 17px;
     background-color: white;
     height: 35px;
     width: 35px;
-    padding: 6px 10px;
+    padding: 6px;
     margin-top: 12px;
-    border: none;
     border-radius: 0 20px 20px 0;
 }
 
@@ -209,6 +213,10 @@ ul {
     font-family: 'Archivo Narrow', sans-serif;
     font-size: 20px;
 }
+.addPost label input {
+    width: 100%;
+    padding: 0.4rem;
+}
 #output {
     max-width: 250px;
     margin: 0;
@@ -254,4 +262,86 @@ main #commentText {
 .commentDiv i {
     padding: 8px;
 }
+
+/***** PROFILE PAGE *****/
+.contains {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 0;
+}
+.userInfo {
+    height: 120px;
+    margin-top: 70px;
+    padding: 0.5rem;
+    border: 2px solid #cccccc;
+    border-radius: 0.5rem 0.5rem 0 0;
+    width: 90%;
+    background-color: white;
+}
+.profileTopDiv {
+    display: flex;
+    flex-direction: row;
+}
+.profileTopDiv .cardProfileImg {
+    width: 100px;
+}
+.profileTopDiv h3 {
+    margin-left: 20px;
+}
+.pics {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    z-index: 0;
+}
+.allPhotos {
+    border-radius: 0 0 0.5rem 0.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    height: 450px;
+    border: 2px solid #cccccc;
+    z-index: 0;
+}
+.profileImg {
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+}
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.65);
+}
+.popup-content {
+    margin-top: 77px;
+    margin-left: 5%;
+    background-color: white;
+    display: block;
+    width: 90%;
+    height: 75%;
+}
+.popup-content #form {
+    position: relative;
+    padding: 10%;
+    font-family: 'Archivo Narrow', sans-serif;
+}
+.popup .closePopup {
+    position: absolute;
+    top: 80px;
+    right: 32px;
+    color: #cccccc;
+    font-size: 42px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+
 
