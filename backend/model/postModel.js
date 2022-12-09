@@ -26,18 +26,6 @@ const getPost = async (id, res) => {
     res.status(500).send(e.message);
   }
 };
-<<<<<<< HEAD
-
-const addPost = async (user_post, res) => {
-  try {
-    const { user_id, file, description, post_created, location } = user_post;
-    //console.log("user:", user);
-    const sql =
-      "INSERT INTO post(user_id,file, description,post_created,file_location) VALUE (?, ?,?,?,?)";
-    const values = [user_id, file, description, post_created, location];
-    const [result] = await promisePool.execute(sql, values);
-    result;
-=======
 const getAllCommentsForPost = async (id, res) => {
   try {
     const sql =
@@ -82,7 +70,6 @@ const addPost = async (user_post, res) => {
     console.log("Values inserted", values);
     const [result] = await promisePool.execute(sql, values);
     //console.log(result.insertId);
->>>>>>> binod
     return result;
   } catch (e) {
     console.error("error", e.message);
@@ -114,10 +101,7 @@ const deletePost = async (id, res) => {
     res.status(501).send(e.message);
   }
 };
-<<<<<<< HEAD
-=======
-const getRandomPost = async();
->>>>>>> binod
+//const getRandomPost = async();
 
 module.exports = {
   getPost,
@@ -125,9 +109,6 @@ module.exports = {
   addPost,
   editPost,
   deletePost,
-<<<<<<< HEAD
-=======
   getAllCommentsForPost,
   getLikesForPost,
->>>>>>> binod
 };

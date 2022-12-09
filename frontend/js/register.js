@@ -1,6 +1,6 @@
 'use strict';
 
-const url = "http://localhost:3005"; // change url when uploading to server
+const url = "http://localhost:3000"; // change url when uploading to server
 
 // select existing html elements
 const addUserForm = document.querySelector('#add-user-form');
@@ -21,6 +21,7 @@ addUserForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + "/auth/register", fetchOptions);
   const json = await response.json();
   alert(json.message);
+  location.href = 'feed.html';
 });
 
 // Move to login
