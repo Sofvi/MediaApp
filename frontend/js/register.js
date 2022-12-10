@@ -21,7 +21,7 @@ addUserForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + "/auth/register", fetchOptions);
   const json = await response.json();
   alert(json.message);
-  location.href = 'feed.html';
+  location.href = 'login.html';
 });
 
 // Move to login
