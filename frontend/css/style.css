@@ -81,6 +81,29 @@
     margin: 50px 60px 0 60px;
 }
 
+/***** REGISTER PAGE *****/
+.registerInfo input[type=text], input[type=password] {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 22px;
+    text-align: center;
+    background: rgba(255,255,255, .2);
+    font-family: "Archivo Narrow", serif;
+    padding: 28px 20px 5px 20px;
+    border: none;
+    border-bottom: 3px solid #949D6A;
+}
+.registerInfo input::placeholder {
+    color: rgba(0, 0, 0, 0.79);
+    font-weight: bold;
+    font-size: 18px;
+    opacity: 0.8;
+}
+.registerInfo {
+    margin: 50px 60px 0 60px;
+    height: 100%;
+}
+
  /**** FEED PAGE ****/
 .topnavigation {
     display: flex;
@@ -160,7 +183,8 @@ ul {
 }
 
 .cardProfileImg {
-    width: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
 }
 
@@ -168,10 +192,13 @@ ul {
     display: flex;
     flex-direction: row;
 }
+.text-container {
+    padding: 10px;
+    font-family: 'Archivo Narrow', sans-serif;
+}
 
-.cardTopDiv img, .cardTopDiv h3 {
+.cardTopDiv img {
     padding: 8px;
-    font-family: "Archivo Narrow", serif;
 }
 
 .likes-comments {
@@ -186,7 +213,6 @@ ul {
 .likes {
     font-family: "Archivo Narrow", serif;
     padding-left: 8px;
-    padding-bottom: 8px;
 }
 
 .comment {
@@ -198,6 +224,10 @@ ul {
     padding-bottom: 4rem;
     z-index: -1;
     background-color: rgba(246, 202, 131, 0.2);
+}
+.description {
+    font-family: 'Archivo Narrow', sans-serif;
+    padding: 5px;
 }
 
 /***** POST PAGE *****/
@@ -262,6 +292,15 @@ main #commentText {
 .commentDiv i {
     padding: 8px;
 }
+.closeComment {
+    position: absolute;
+    top: 80px;
+    right: 32px;
+    color: #cccccc;
+    font-size: 42px;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
 /***** PROFILE PAGE *****/
 .contains {
@@ -299,6 +338,7 @@ main #commentText {
     border-radius: 0 0 0.5rem 0.5rem;
     display: flex;
     justify-content: space-evenly;
+    flex-direction: row;
     width: 90%;
     height: 450px;
     border: 2px solid #cccccc;
@@ -308,6 +348,13 @@ main #commentText {
     width: 100px;
     height: 100px;
     padding: 5px;
+}
+.imageList {
+    margin: 5px;
+    background-color: #cccccc;
+    text-align: center;
+    width: 25%;
+    height: 20%;
 }
 .popup {
     display: none;
