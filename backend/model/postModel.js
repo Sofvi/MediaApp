@@ -101,7 +101,7 @@ const deletePost = async (id, res) => {
     res.status(501).send(e.message);
   }
 };
-const getRandomPost = async();
+//const getRandomPost = async();
 
 module.exports = {
   getPost,
