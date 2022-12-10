@@ -1,18 +1,14 @@
 /**
  MIT License
-
  Copyright (c) 2017 yiming.hsu <mufasa.hsu@gmail.com}
-
  Permission is hereby granted, free of charge, to any person obtaining a copy
  of this software and associated documentation files (the "Software"), to deal
  in the Software without restriction, including without limitation the rights
  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  copies of the Software, and to permit persons to whom the Software is
  furnished to do so, subject to the following conditions:
-
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,7 +16,6 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
-
  serialises a form to an object. The use is the same with $.fn.serialize
  and $.fn.serializeArray, or serializeJson(array)
  The keys are the form element names(split) and the value is the the form element
@@ -36,7 +31,7 @@ if (!Array.prototype.reduce) {
     value: function (callback /*, initialValue*/) {
       if (this === null) {
         throw new TypeError(
-          'Array.prototype.reduce ' + 'called on null or undefined'
+            'Array.prototype.reduce ' + 'called on null or undefined'
         );
       }
       if (typeof callback !== 'function') {
@@ -64,7 +59,7 @@ if (!Array.prototype.reduce) {
         //    throw a TypeError exception.
         if (k >= len) {
           throw new TypeError(
-            'Reduce of empty array ' + 'with no initial value'
+              'Reduce of empty array ' + 'with no initial value'
           );
         }
         value = o[k++];
@@ -96,17 +91,17 @@ if (!Array.prototype.reduce) {
 // main function
 function serializeJson(form, protected = false) {
   var data = {},
-    form_arr = [];
+      form_arr = [];
   // export to array
   if (
-    typeof HTMLFormElement === 'function' &&
-    form instanceof HTMLFormElement
+      typeof HTMLFormElement === 'function' &&
+      form instanceof HTMLFormElement
   ) {
     for (var i in form.elements) {
       if (
-        form.elements[i] instanceof HTMLInputElement ||
-        form.elements[i] instanceof HTMLSelectElement ||
-        form.elements[i] instanceof HTMLTextAreaElement
+          form.elements[i] instanceof HTMLInputElement ||
+          form.elements[i] instanceof HTMLSelectElement ||
+          form.elements[i] instanceof HTMLTextAreaElement
       )
         form_arr.push({
           name: form.elements[i].name,
@@ -120,7 +115,7 @@ function serializeJson(form, protected = false) {
   // serialize to json
   data = form_arr.reduce(function (r, o) {
     var s = r,
-      arr = o.name.split('.');
+        arr = o.name.split('.');
     arr.forEach((n, k) => {
       var ck = n.replace(/\[[0-9]*\]$/, '');
       if (!s.hasOwnProperty(ck))

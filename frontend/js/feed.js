@@ -45,9 +45,9 @@ postBtn.addEventListener('click', () => {
 });
 
 likeBtn.addEventListener('click', () => {
-  if (likeBtn.className = '.fa-regular fa-heart') {
+  if (likeBtn.className === '.fa-regular fa-heart') {
     likeBtn.className = 'fa-solid fa-heart';
-  } else { 
+  } else {
     likeBtn.className = 'fa-regular fa-heart';
     console.log('like clicked');
   }
