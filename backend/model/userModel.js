@@ -4,7 +4,7 @@ const promisePool = pool.promise();
 
 const getAllUsers = async (res) => {
   try {
-    const sql = "SELECT username,email FROM user";
+    const sql = "SELECT username, email, profile_pic FROM user";
     const [rows] = await promisePool.execute(sql);
     return rows;
   } catch (e) {
@@ -15,7 +15,7 @@ const getAllUsers = async (res) => {
 
 const getUserById = async (id, res) => {
   try {
-    const sql = "SELECT id, username, email FROM user WHERE id=" + id;
+    const sql = "SELECT id, username, email, profile_pic FROM user WHERE id=" + id;
     const [rows] = await promisePool.execute(sql);
     console.log(rows);
     return rows[0];
@@ -42,6 +42,20 @@ const addUser = async (user, res) => {
     //console.log("user:", user);
     const sql = "INSERT INTO user VALUE (null, ?, ?, ?,1)";
     const values = [username, email, password];
+    const [result] = await promisePool.execute(sql, values);
+    result;
+    return result;
+  } catch (e) {
+    console.error("error", e.message);
+    res.status(500).send(e.message);
+  }
+};
+
+const addUserProfilePic = async (user, res) => {
+  try {
+    const { profile_pic } = user;
+    const sql = "UPDATE USER SET profile_pic = ? WHERE id = ?";
+    const values = [profile_pic];
     const [result] = await promisePool.execute(sql, values);
     result;
     return result;
@@ -99,6 +113,7 @@ module.exports = {
   getUserById,
   getUserLogin,
   addUser,
+  addUserProfilePic,
   modifyUser,
   deleteUser,
   getPostsOfUser,

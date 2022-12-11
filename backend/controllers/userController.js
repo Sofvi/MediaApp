@@ -35,6 +35,22 @@ const createUser = async (req, res) => {
 
   //res.send("User added");
 };
+
+const addProfilePic = async (req, res) => {
+  console.log(req.file);
+  console.log(req.body);
+  if (!req.file) {
+    res.status(400).json({ message: "file not found OR invalid file" });
+  } else {
+    const newPic = req.body;
+    newPic.profile_pic = req.file.profile_pic;
+    console.log(newPic.profile_pic);
+    const result = await userModel.addUserProfilePic(newPic, res);
+    console.log(result);
+    }
+
+};
+
 const modifyUser = async (req, res) => {
   const user = req.body;
   console.log(user);
@@ -67,6 +83,7 @@ module.exports = {
   getUsers,
   getUser,
   createUser,
+  addProfilePic,
   modifyUser,
   getUsersPosts,
   checkToken,

@@ -3,6 +3,10 @@
     box-sizing: border-box;
 }
 
+p {
+    font-family: "Archivo Narrow", serif;
+}
+
 /**** LOGIN *****/
 .header {
     width: 100%;
@@ -234,6 +238,7 @@ main #commentText {
 #commentText input[type=text] {
     padding: 20px;
 }
+
 #sendCommentBtn {
     height: 60px;
     width: 100px;
@@ -249,7 +254,26 @@ main #commentText {
     padding: 4rem 0.5rem;
 }
 
-.commentDiv {
+.commentBoxDiv {
+    display: flex;
+    flex-direction:unset;
+    border: 2px solid #cccccc;
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 14px;
+    margin-bottom: 8px;
+    max-height: 130px;
+    overflow: scroll;
+}
+
+div::-webkit-scrollbar {
+    display: none; 
+  }
+
+.commentBoxDiv ul {
+    position: static;
+}
+
+#addCommentForm {
     display: flex;
     flex-direction: row;
 }

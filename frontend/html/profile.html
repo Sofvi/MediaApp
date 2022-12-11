@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
     <script defer src="../js/profile.js"></script>
+    <script defer src="../js/serialize.js"></script>
     <title>Profile</title>
 </head>
 <body>
@@ -35,15 +36,15 @@
                 <div id="myPopup" class="popup">
                     <span class="closePopup">&times;</span>
                     <div class="popup-content">
-                        <form id="form" action="">  <!--Add action here-->
+                        <form id="addProfilePicForm" action="http://localhost:3000/user" enctype="multipart/form-data">  <!--Add action here-->
                             <img id="output"><br><br>
                             <label for="choose-file">Select a file:</label><br><br>
-                            <input type="file" id="choose-file" name="choose-file" accept="image/*" onchange="loadFile(event)"><br><br>
-                            <input type="submit">
+                            <input type="file" id="choose-file" name="profile_pic" accept="image/*" onchange="loadFile(event)"><br><br>
+                            <button type="submit">Submit</button>
                         </form>
                     </div>
                 </div>
-                <h3>Profile Name</h3>
+                <h3 id="profileName">Profile Name</h3>
             </div>
         </div>
     </div>
