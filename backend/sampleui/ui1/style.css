@@ -2,11 +2,11 @@
   margin: 0;
   box-sizing: border-box;
 }
-/* Header */
+
+/**** LOGIN *****/
 .header {
   width: 100%;
 }
-/* TravelShare */
 .topnav {
   height: 55px;
   text-align: center;
@@ -17,47 +17,111 @@
 }
 /* Login text */
 .container h1 {
-  margin-top: 85px;
+  margin-top: 140px;
   font-family: "Julius Sans One", sans-serif;
-  font-size: 36px;
+  font-size: 50px;
+  color: white;
 }
-.container {
+.login .container {
   display: flex;
   flex-direction: column;
   text-align: center;
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+}
+.bg-image {
+  background-image: url("../img/pic3.jpg");
+  background-size: auto 100%;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  top: 0;
+  position: absolute;
+  background-repeat: no-repeat;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
 }
 /* Login form */
-input[type="text"],
+.loginInfo input[type="text"],
 input[type="password"] {
   width: 100%;
   margin-top: 10px;
-  padding: 18px 20px;
-  border: 1px solid #ccc;
+  font-size: 22px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  font-family: "Archivo Narrow", serif;
+  padding: 28px 20px 5px 20px;
+  border: none;
+  border-bottom: 3px solid #949d6a;
+}
+.loginInfo input::placeholder {
+  color: rgba(0, 0, 0, 0.79);
+  font-weight: bold;
+  font-size: 18px;
+  opacity: 0.8;
 }
 /* Login button */
 #loginBtn {
-  background-color: lightsalmon;
+  background-color: #f6ca83;
   color: white;
   padding: 14px 20px;
-  margin: 40px 0 60px;
+  margin: 50px 0 20px;
   border: none;
   width: 100%;
   font-family: "Archivo Narrow", sans-serif;
-  font-size: 20px;
-}
-/* Button hover */
-#loginBtn:hover {
-  opacity: 0.6;
+  font-size: 24px;
 }
 #regBtn,
 #anoBtn {
   font-size: 20px;
+  font-family: "Archivo Narrow", sans-serif;
+  text-decoration: none;
+  color: white;
 }
 .loginInfo {
   margin: 50px 60px 0 60px;
+}
+
+/***** REGISTER PAGE *****/
+.registerInfo input[type="text"],
+input[type="password"] {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 22px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  font-family: "Archivo Narrow", serif;
+  padding: 28px 20px 5px 20px;
+  border: none;
+  border-bottom: 3px solid #949d6a;
+}
+.register .container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
   height: 100%;
 }
-form {
+#registerBtn {
+  background-color: #f6ca83;
+  color: white;
+  padding: 14px 20px;
+  margin: 20px 0 20px;
+  border: none;
+  width: 100%;
+  font-family: "Archivo Narrow", sans-serif;
+  font-size: 24px;
+}
+.registerInfo input::placeholder {
+  color: rgba(0, 0, 0, 0.79);
+  font-weight: bold;
+  font-size: 18px;
+  opacity: 0.8;
+}
+.registerInfo {
+  margin: 50px 60px 0 60px;
   height: 100%;
 }
 
@@ -67,28 +131,46 @@ form {
   position: fixed;
   width: 100%;
   height: 55px;
-  font-size: 16px;
-  background-color: wheat;
+  font-size: 20px;
+  background-color: rgba(222, 221, 221, 0.8);
   font-family: "Julius Sans One", sans-serif;
 }
 .fa-square-plus {
-  font-size: 32px;
+  position: absolute;
+  margin: 10px;
+  font-size: 30px;
+  color: #383735;
+}
+.fa-right-to-bracket {
+  position: absolute;
+  font-size: 30px;
+  color: #383735;
+  right: 10px;
+  top: 10px;
 }
 .topnavigation h3 {
   text-align: center;
   padding: 16px;
   flex: 1 0 auto;
+  color: black;
 }
 ul {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   position: absolute;
-  padding: 10px;
   list-style-type: none;
+}
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: #aecdf3;
 }
 .bottomnav {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background-color: gray;
+  background-color: rgb(222, 221, 221);
   overflow: hidden;
   height: 60px;
   position: fixed;
@@ -99,24 +181,87 @@ ul {
 .fa-user {
   font-size: 25px;
   padding: 17px;
+  color: #383735;
 }
 .bottomnav input[type="text"] {
   border: 1px solid #ccc;
   border-radius: 20px 0 0 20px;
+  box-shadow: 0 3px #818181;
   width: 140px;
   height: 35px;
-  padding: 6px;
+  padding: 10px;
   font-size: 17px;
 }
 .bottomnav button {
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-left: none;
+  box-shadow: 1px 3px #818181;
+  margin-left: -8px;
   font-size: 17px;
   background-color: white;
   height: 35px;
   width: 35px;
-  padding: 6px 10px;
+  padding: 6px;
   margin-top: 12px;
-  border: none;
   border-radius: 0 20px 20px 0;
+}
+
+.card {
+  margin: 0.8rem;
+  padding: 0.5rem;
+  border: 3px solid #cccccc;
+  border-radius: 0.5rem;
+  max-width: 470px;
+  background-color: white;
+  box-shadow: 5px 8px rgba(0, 0, 0, 0.19);
+}
+
+.cardProfileImg {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  padding: 8px;
+}
+
+.cardTopDiv {
+  display: flex;
+  flex-direction: row;
+}
+.text-container {
+  padding: 10px;
+  font-family: "Archivo Narrow", sans-serif;
+}
+.likes-comments {
+  display: flex;
+  flex-direction: row;
+}
+
+.likes-comments i {
+  padding: 8px;
+  font-size: 24px;
+}
+.likes {
+  font-family: "Archivo Narrow", serif;
+  font-size: 16px;
+  padding-left: 8px;
+}
+.comment {
+  border-radius: 25%;
+}
+#picList {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  z-index: -1;
+  background-image: url("../img/pic4.jpg");
+  background-size: auto 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+.description {
+  font-family: "Archivo Narrow", sans-serif;
+  padding: 5px;
 }
 
 /***** POST PAGE *****/
@@ -132,7 +277,167 @@ ul {
   font-family: "Archivo Narrow", sans-serif;
   font-size: 20px;
 }
+.addPost label input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #cccccc;
+}
 #output {
   max-width: 250px;
   margin: 0;
+}
+.addPost input[type="submit"] {
+  background-color: #f6ca83;
+  color: white;
+  margin-top: -15px;
+  padding: 5px;
+  border: 2px solid #cccccc;
+  width: 100%;
+  font-family: "Archivo Narrow", sans-serif;
+  font-size: 22px;
+}
+
+/**** COMMENT PAGE *****/
+main #commentText {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  position: absolute;
+  margin-top: 500px;
+  margin-left: 8%;
+}
+#commentText input[type="text"] {
+  padding: 20px;
+}
+#sendCommentBtn {
+  height: 60px;
+  width: 100px;
+  margin-top: 10px;
+}
+.commentContent {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("../img/pic4.jpg");
+  background-size: auto 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+.cardDiv {
+  padding: 4rem 0.5rem;
+}
+.cardDiv h3 {
+  font-family: "Archivo Narrow", sans-serif;
+  padding: 10px;
+}
+.commentDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.commentDiv input {
+  width: 100%;
+  padding: 8px;
+}
+
+.commentDiv i {
+  padding: 8px;
+}
+.closeComment {
+  position: absolute;
+  top: 80px;
+  right: 32px;
+  color: #cccccc;
+  font-size: 42px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/***** PROFILE PAGE *****/
+.contains {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 0;
+}
+.userInfo {
+  height: 120px;
+  margin-top: 70px;
+  padding: 0.5rem;
+  border: 2px solid #cccccc;
+  border-radius: 0.5rem 0.5rem 0 0;
+  width: 90%;
+  background-color: white;
+}
+.profileTopDiv {
+  display: flex;
+  flex-direction: row;
+}
+.profileTopDiv .cardProfileImg {
+  width: 100px;
+  height: 100px;
+}
+.profileTopDiv h3 {
+  margin-left: 20px;
+}
+.pics {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 0;
+}
+.allPhotos {
+  border-radius: 0 0 0.5rem 0.5rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 90%;
+  height: 450px;
+  border: 2px solid #cccccc;
+  z-index: 0;
+}
+.profileImg {
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+}
+.imageList {
+  margin: 5px;
+  background-color: #cccccc;
+  text-align: center;
+  width: 25%;
+  height: 20%;
+}
+.popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+.popup-content {
+  margin-top: 77px;
+  margin-left: 5%;
+  background-color: white;
+  display: block;
+  width: 90%;
+  height: 75%;
+}
+.popup-content #form {
+  position: relative;
+  padding: 10%;
+  font-family: "Archivo Narrow", sans-serif;
+}
+.popup .closePopup {
+  position: absolute;
+  top: 80px;
+  right: 32px;
+  color: #cccccc;
+  font-size: 42px;
+  font-weight: bold;
+  transition: 0.3s;
 }

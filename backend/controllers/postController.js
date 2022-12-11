@@ -48,6 +48,8 @@ const createPost = async (req, res) => {
     await makeThumbnail(req.file.path, req.file.filename);
     newPost.coords = JSON.stringify(await getCoordinates(req.file.path));
 
+    console.log(req.user);
+    //newPost.user_id = req.user.id;
     newPost.filename = req.file.filename;
     console.log(newPost.filename);
 
@@ -62,12 +64,6 @@ const createPost = async (req, res) => {
     console.log("validation errors", errors);
     res.status(400).json({ message: "Failed to post", errors: errors.array() });
   }
-
-  /*  const newPost = req.body;
-  console.log("Creating a new post:", newPost);
-  const result = await addPost(newPost, res);
-  res.status(201).json({ userId: result });
-  //res.send("User added"); */
 };
 const modifyPost = async (req, res) => {
   const post = req.body;

@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../style.css" />
     <script defer src="../js/feed.js"></script>
     <title>Feed</title>
   </head>
@@ -23,13 +23,13 @@
       <!-- Top title bar -->
       <div class="topnavigation">
         <h3>TravelShare</h3>
-        <ul>
-          <li><i class="fa-solid fa-square-plus"></i></li>
-        </ul>
+        <!-- I have added an id addPost to render it to the post.html-->
+        <i id="addPost" class="fa-solid fa-square-plus"></i>
+        <i class="fa-solid fa-right-to-bracket"></i>
       </div>
     </header>
     <div class="content">
-      <ul id="picList">
+      <ul class="feed-list" id="picList">
         <!-- js creates list here -->
         <!-- Just for looks now -->
         <div class="card">
@@ -39,7 +39,10 @@
               alt="Dog"
               class="cardProfileImg"
             />
-            <h3>Profile Name</h3>
+            <div class="text-container">
+              <h3>Profile Name</h3>
+              <p id="location">location here</p>
+            </div>
           </div>
           <img
             src="https://place-puppy.com/500x500"
@@ -52,19 +55,23 @@
               <i class="fa-regular fa-comment"></i>
             </div>
             <p class="likes">23 likes</p>
+            <p class="description">description renders here</p>
           </div>
         </div>
         <div class="card">
           <div class="cardTopDiv">
             <img
-              src="https://place-puppy.com/300x300"
+              src="https://place-puppy.com/400x400"
               alt="Dog"
               class="cardProfileImg"
             />
-            <h3>Profile Name</h3>
+            <div class="text-container">
+              <h3>Profile Name</h3>
+              <p class="location">location here</p>
+            </div>
           </div>
           <img
-            src="https://place-puppy.com/600x600"
+            src="https://place-puppy.com/500x500"
             alt="Dog"
             style="width: 100%"
           />
@@ -74,19 +81,23 @@
               <i class="fa-regular fa-comment"></i>
             </div>
             <p class="likes">23 likes</p>
+            <p class="description">description renders here</p>
           </div>
         </div>
         <div class="card">
           <div class="cardTopDiv">
             <img
-              src="https://place-puppy.com/700x700"
+              src="https://place-puppy.com/400x400"
               alt="Dog"
               class="cardProfileImg"
             />
-            <h3>Profile Name</h3>
+            <div class="text-container">
+              <h3>Profile Name</h3>
+              <p class="location">location here</p>
+            </div>
           </div>
           <img
-            src="https://place-puppy.com/300x300"
+            src="https://place-puppy.com/500x500"
             alt="Dog"
             style="width: 100%"
           />
@@ -96,18 +107,21 @@
               <i class="fa-regular fa-comment"></i>
             </div>
             <p class="likes">23 likes</p>
+            <p class="description">description renders here</p>
           </div>
         </div>
       </ul>
-    </div>
-    <!-- Bottom nav bar -->
-    <div class="bottomnav">
-      <i class="fa-solid fa-house"></i>
-      <label>
-        <input type="text" placeholder="Search.." />
-        <button type="submit"><i class="fa fa-search"></i></button>
-      </label>
-      <i class="fa-solid fa-user"></i>
+      <!-- Bottom nav bar -->
+      <div class="bottomnav">
+        <i class="fa-solid fa-house"></i>
+        <div class="searchbar">
+          <label>
+            <input type="text" placeholder="Search.." />
+          </label>
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+        <i class="fa-solid fa-user"></i>
+      </div>
     </div>
   </body>
 </html>

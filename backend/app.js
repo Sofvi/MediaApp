@@ -15,6 +15,7 @@ const likeRoute = require("./routes/likeRoute");
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static("uploads"));
+app.use("/thumbnails", express.static("thumbnails"));
 app.use(cors());
 app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: true }));

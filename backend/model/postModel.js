@@ -2,9 +2,10 @@
 const pool = require("../database/db-config");
 const promisePool = pool.promise();
 
-const getAllPosts = async (postId, res) => {
+const getAllPosts = async (res) => {
   try {
-    const sql = "SELECT * FROM post";
+    const sql =
+      "SELECT post.id, location, description, filename,post_created, user.username AS profilename FROM post JOIN user on post.user_id = user.id;";
 
     const [rows] = await promisePool.query(sql);
     return rows;
@@ -57,6 +58,9 @@ const addPost = async (user_post, res) => {
     if (coords == undefined) {
       coords = null;
     }
+    if (user_id == undefined) {
+      user_id = null;
+    }
     const sql =
       "INSERT INTO post(user_id,filename, description,post_created,location, coords) VALUE (?,?,?,?,?,?)";
     const values = [
@@ -101,7 +105,7 @@ const deletePost = async (id, res) => {
     res.status(501).send(e.message);
   }
 };
-const getRandomPost = async();
+//const getRandomPost = async();
 
 module.exports = {
   getPost,
