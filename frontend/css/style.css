@@ -93,6 +93,24 @@
     border: none;
     border-bottom: 3px solid #949D6A;
 }
+.register .container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+}
+#registerBtn {
+    background-color: #F6CA83;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0 20px;
+    border: none;
+    width: 100%;
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 24px;
+}
 .registerInfo input::placeholder {
     color: rgba(0, 0, 0, 0.79);
     font-weight: bold;
@@ -115,9 +133,17 @@
     font-family: 'Julius Sans One', sans-serif;
 }
 .fa-square-plus {
+    position: absolute;
     margin: 10px;
-    font-size: 32px;
+    font-size: 30px;
     color: #383735;
+}
+.fa-right-to-bracket {
+    position: absolute;
+    font-size: 30px;
+    color: #383735;
+    right: 10px;
+    top: 10px;
 }
 .topnavigation h3 {
     text-align: center;
@@ -250,11 +276,22 @@ ul {
 }
 .addPost label input {
     width: 100%;
-    padding: 0.4rem;
+    padding: 0.8rem;
+    border: 2px solid #cccccc;
 }
 #output {
     max-width: 250px;
     margin: 0;
+}
+.addPost input[type='submit'] {
+    background-color: #F6CA83;
+    color: white;
+    margin-top: -15px;
+    padding: 5px;
+    border: 2px solid #cccccc;
+    width: 100%;
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 22px;
 }
 
 /**** COMMENT PAGE *****/

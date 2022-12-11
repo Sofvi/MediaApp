@@ -8,6 +8,7 @@ const profileBtn = document.querySelector('.fa-solid.fa-user');
 const postBtn = document.querySelector('.fa-solid.fa-square-plus');
 const likeBtn = document.querySelector('.fa-regular.fa-heart');
 const commentBtn = document.querySelector('.fa-regular.fa-comment');
+const loginBtn = document.querySelector('.fa-right-to-bracket');
 
 
 // create cards
@@ -31,16 +32,21 @@ const createFeedCards = (pics) => {
     ul.appendChild(li);
   });
 };
-
+// Move to login if not logged in
+// TODO: ADD FUNCTION TO CHECK IF LOGGED IN
+loginBtn.addEventListener('click', () => {
+  location.href = '../html/login.html';
+  console.log('redirect to login')
+})
 // Move to profile
 profileBtn.addEventListener('click', () => {
-  location.href = 'profile.html';
+  location.href = '../html/profile.html';
   console.log('redirect to feed');
 });
 
 // Move to post
 postBtn.addEventListener('click', () => {
-  location.href = 'post.html';
+  location.href = '../html/post.html';
   console.log('redirect to post');
 });
 
@@ -54,7 +60,7 @@ likeBtn.addEventListener('click', () => {
 });
 
 commentBtn.addEventListener('click', () => {
-  location.href = 'comment.html';
+  location.href = '../html/comment.html';
   console.log('redirect to comment');
 });
 
