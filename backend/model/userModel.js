@@ -70,7 +70,7 @@ const modifyUser = async (user, res) => {
     console.log("Modify user:", user);
     const { username, email, password, type, id } = user;
     const sql =
-      "UPDATE user SET username = ?, email = ?, password = ?, type = ? WHERE id = ? ";
+      "UPDATE user SET username = ?, email = ?, password = ?, type = ?, WHERE id = ? ";
     const values = [username, email, password, type, id];
     const [result] = await promisePool.execute(sql, values);
     console.log("Results: ", result);
@@ -79,6 +79,7 @@ const modifyUser = async (user, res) => {
     res.status(501).send(e.message);
   }
 };
+
 const deleteUser = async (userId, type) => {
   // only admin can delete user, the type of admin is 0
   if (type === 0) {
