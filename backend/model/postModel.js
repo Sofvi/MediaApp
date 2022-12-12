@@ -6,7 +6,6 @@ const getAllPosts = async (res) => {
   try {
     const sql =
       "SELECT post.id, location, description, filename,post_created, user.username AS profilename FROM post JOIN user on post.user_id = user.id;";
-
     const [rows] = await promisePool.query(sql);
     return rows;
   } catch (e) {
@@ -58,9 +57,9 @@ const addPost = async (user_post, req, res) => {
     if (coords == undefined) {
       coords = null;
     }
-    if (user_id == undefined) {
-      user_id = null;
-    }
+    // if (user_id == undefined) {
+    //   user_id = null;
+    // }
     const sql =
       "INSERT INTO post(user_id,filename, description,post_created,location, coords) VALUE (?,?,?,?,?,?)";
     const values = [

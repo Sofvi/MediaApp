@@ -13,28 +13,24 @@ const getQParam = (param) => {
   return urlParams.get(param);
 };
 
-//const userData = user && JSON.parse(user);
-//const userData = JSON.parse(user);
-
-//console.log(userData.id);
 const feed = document.querySelector(".feed-list");
 const addPost = document.querySelector("#addPost");
 const userLogin = document.querySelector("#user-login");
 
 const profileBtn = document.querySelector(".fa-solid.fa-user");
 //const postBtn = document.querySelector('.fa-solid.fa-square-plus');
-const likeBtn = document.querySelector(".fa-regular.fa-heart");
+const likeBtn = document.querySelector(".fa-regular fa-heart");
 const commentBtn = document.querySelector(".fa-regular.fa-comment");
 const loginBtn = document.querySelector(".fa-right-to-bracket");
 
-/* userLogin.addEventListener("click", ()=>{
+userLogin.addEventListener("click", () => {
   if (!user && !token) {
     alert("You need to log in to post!!");
     location.href = "../html/login.html";
   } else {
     location.href = "../html/feed.html";
   }
-}) */
+});
 
 loginBtn.addEventListener("click", () => {
   location.href = "../html/login.html";
@@ -46,14 +42,14 @@ profileBtn.addEventListener("click", () => {
   console.log("redirect to feed");
 });
 
-likeBtn.addEventListener("click", () => {
+/* likeBtn.addEventListener("click", () => {
   if (likeBtn.className === ".fa-regular fa-heart") {
     likeBtn.className = "fa-solid fa-heart";
   } else {
     likeBtn.className = "fa-regular fa-heart";
     console.log("like clicked");
   }
-});
+}); */
 
 commentBtn.addEventListener("click", () => {
   location.href = "../html/comment.html";
@@ -70,13 +66,10 @@ addPost.addEventListener("click", () => {
 });
 
 const createFeedPost = (posts) => {
-  //const feed = document.querySelector(".feed-list");
-  //console.log(posts);
   feed.innerHTML = "";
-
   posts.forEach((post) => {
     num_likes = post.num_likes;
-    //console.log(post);
+
     feed.innerHTML += `
      <div class="card">
   <div class="cardTopDiv">
@@ -94,17 +87,59 @@ const createFeedPost = (posts) => {
       src="${url + "/thumbnails/" + post.filename}"
       alt="${post.profilename}'s post"
       style="width: 100%"
-    />
-  <div class="container">
-    <div class="likes-comments">
-      <i id="like-btn" class="fa-regular fa-heart"></i>
-      <i id="comment-btn" class="fa-regular fa-comment"></i>
-    </div>
-    <p class="likes">23 likes</p>
-    <p class="description">${post.description}</p>
-    
-  </div>
-</div>`;
+      />
+      <div class="container">
+      <div class="likes-comments">
+      <i  class="fa-regular fa-heart"></i>
+      <i  class="fa-regular fa-comment"></i>
+      </div>
+      <p class="likes">23 likes</p>
+      <p class="description">${post.description}</p>
+      
+      </div>
+      </div>`;
+  });
+
+  const likeButton = document.querySelectorAll(".fa-regular.fa-heart");
+  const totalLikes = document.querySelectorAll(".likes");
+
+  likeButton.forEach((like, index) => {
+    like.addEventListener("click", async () => {
+      console.log("cliked", index, posts[index].id);
+      try {
+        const fetchOptions = {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + sessionStorage.getItem("token"),
+          },
+        };
+        const response = await fetch(
+          url + "/post/like/" + posts[index].id,
+          fetchOptions
+        );
+        //console.log(response);
+      } catch (e) {
+        console.log(e.message);
+      }
+    });
+  });
+
+  totalLikes.forEach(async (like, index) => {
+    try {
+      const fetchOptions = {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+      };
+      const response = await fetch(
+        url + "/post/like/" + posts[index].id,
+        fetchOptions
+      );
+      const json = await response.json();
+    } catch (e) {
+      console.log(e.message);
+    }
   });
 };
 
@@ -115,75 +150,17 @@ const getPics = async () => {
         Authorization: "Bearer " + sessionStorage.getItem("token"),
       },
     };
-    /*  const response = await fetch(
-      url + "/user/" + user.id + "/post",
-      fetchOptions
-    ); */
+
     const response = await fetch(url + "/post", fetchOptions);
     const feedPost = await response.json();
-    console.log(feedPost);
+    //console.log(feedPost);
     createFeedPost(feedPost);
-    likeUnlike();
     searchOption(feedPost);
   } catch (e) {
     console.log(e.message);
   }
 };
 getPics();
-
-//Implementing like/unlike
-const likeUnlike = () => {
-  const likeBtn = document.querySelector("#like-btn");
-
-  likeBtn.addEventListener("click", async () => {
-    const likeCounter = document.querySelector(".likes");
-    console.log("like icon clicked");
-
-    if (likeBtn.className === "unliked") {
-      likeBtn.setAttribute("class", "liked");
-      try {
-        const fetchOptions = {
-          method: "POST",
-          headers: {
-            Authorization: "Bearer " + sessionStorage.getItem("token"),
-          },
-        };
-        const response = await fetch(
-          url + "/post/" + post.id + "/like",
-          fetchOptions
-        );
-        console.log(response);
-        const like = await response.json();
-        num_likes++;
-        likeCounter.innerHTML = `${num_likes}`;
-      } catch (e) {
-        console.log(e.message);
-      }
-    } else {
-      likeBtn.setAttribute("class", "unliked");
-
-      try {
-        const fetchOptions = {
-          method: "DELETE",
-          headers: {
-            Authorization: "Bearer " + sessionStorage.getItem("token"),
-          },
-        };
-        const response = await fetch(
-          url + "/post/" + post.id + "/likes",
-          fetchOptions
-        );
-        const unLike = await response.json();
-
-        num_likes--;
-        likeCounter.innerHTML = `${num_likes}`;
-      } catch (e) {
-        console.log(e.message);
-      }
-    }
-  });
-};
-likeUnlike();
 
 //TODO* implement the search option
 // change url when uploading to server
@@ -218,10 +195,9 @@ const createSearchCard = (searchPost) => {
     <p class="likes">23 likes</p>
     <p class="description">${searchPost.description}</p>
     
-  </div>
-</div>`;
+    </div>
+    </div>`;
 };
-
 const searchOption = (feedSearch) => {
   searchItem.addEventListener("keyup", (e) => {
     if (e.keyCode === 13) {

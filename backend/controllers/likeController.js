@@ -7,9 +7,10 @@ const {
 } = require("../model/likeModel");
 
 const getAllLike = async (req, res) => {
-  const likes = await getLikes();
-  if (likes) {
-    res.json(likes);
+  const response = await getLikes(req.params.id);
+  //console.log("like", response);
+  if (response) {
+    res.json(response);
   } else {
     res.status(404).send("Errorr!!");
   }
@@ -27,9 +28,9 @@ const getPostsLike = async (req, res) => {
 };
 
 const addLikeToPost = async (req, res) => {
-  const post = req.params.id;
-  const user = req.params.userId;
-  const like = await addLike(post, user);
+  const postId = req.params.id;
+  const user = req.user.id;
+  const like = await addLike(postId, user);
   if (like) {
     res.json(like);
   } else {
