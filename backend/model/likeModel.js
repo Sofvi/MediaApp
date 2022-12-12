@@ -6,7 +6,7 @@ const promisePool = pool.promise();
 const getLikes = async () => {
   try {
     const sql =
-      "SELECT post.file, userlike.post_id, COUNT(likes_num) FROM post INNER JOIN user_like ON post.id =userlike.post_id GROUP BY post_id ORDER BY COUNT(likes_num) DESC limit 3 ";
+      "SELECT userlike.post_id, COUNT(likes_num) FROM post INNER JOIN userlike ON post.id =userlike.post_id GROUP BY post_id ORDER BY COUNT(likes_num) DESC limit 3 ";
 
     const [result] = await promisePool.execute(sql);
 
@@ -36,7 +36,7 @@ const addLike = async (postId, userId) => {
     console.error("Added like", e.message);
   }
 };
-const deleteLike = async (postId, userId, next) => {
+const deleteLike = async (postId, userId) => {
   try {
     const [rows] = await promisePool.execute(
       "DELETE FROM userlike WHERE post_id = ? AND user_id = ?",

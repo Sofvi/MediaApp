@@ -20,7 +20,7 @@ const getPost = async (id, res) => {
     const sql =
       "SELECT id, filename, description, post_created, location, (SELECT count(likes_num) from userlike WHERE userlike.post_id = post.id) as num_likes ,(SELECT count(*) from comment WHERE comment.post_id = post.id) as num_comments, (SELECT user.username from user WHERE user.id = post.user_id) as owner FROM post WHERE id = ?";
     const [rows] = await promisePool.query(sql, id);
-    console.log(rows);
+    console.log("Rows", rows);
     return rows[0];
   } catch (e) {
     console.error("error", e.message);
@@ -49,7 +49,7 @@ const getLikesForPost = async (id, res) => {
   }
 };
 
-const addPost = async (user_post, res) => {
+const addPost = async (user_post, req, res) => {
   try {
     let { user_id, filename, description, post_created, location, coords } =
       user_post;

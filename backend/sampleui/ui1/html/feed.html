@@ -51,7 +51,7 @@
           />
           <div class="container">
             <div class="likes-comments">
-              <i class="fa-regular fa-heart"></i>
+              <i id="like-btn" class="fa-regular fa-heart"></i>
               <i class="fa-regular fa-comment"></i>
             </div>
             <p class="likes">23 likes</p>
@@ -103,7 +103,8 @@
           />
           <div class="container">
             <div class="likes-comments">
-              <i class="fa-regular fa-heart"></i>
+              <!--Added id to implement the like unlike function-->
+              <i id="like-unlike" class="fa-regular fa-heart"></i>
               <i class="fa-regular fa-comment"></i>
             </div>
             <p class="likes">23 likes</p>
@@ -116,9 +117,18 @@
         <i class="fa-solid fa-house"></i>
         <div class="searchbar">
           <label>
-            <input type="text" placeholder="Search.." />
+            <input
+              id="search-item"
+              type="text"
+              placeholder="Search.."
+              value=""
+              name="search-item"
+            />
           </label>
-          <button type="submit"><i class="fa fa-search"></i></button>
+          <!--Added search id to render the serach options-->
+          <button id="searchBtn" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
         </div>
         <i class="fa-solid fa-user"></i>
       </div>

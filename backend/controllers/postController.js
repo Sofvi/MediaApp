@@ -25,12 +25,12 @@ const getPosts = async (req, res) => {
 
 //Get post by id
 const getPostById = async (req, res) => {
-  console.log(req.params.id);
   //console.log(req.body);
   const postId = req.params.id;
+  console.log("The id for post: ", postId);
   const post = await getPost(postId, res);
   console.log(post);
-
+  //If the post id is unavailable throws an error, the least usable id is 9
   if (post) {
     post.post_created = post.post_created.toISOString().split("T")[0];
     res.json(post);
@@ -48,8 +48,8 @@ const createPost = async (req, res) => {
     await makeThumbnail(req.file.path, req.file.filename);
     newPost.coords = JSON.stringify(await getCoordinates(req.file.path));
 
-    console.log(req.user);
-    //newPost.user_id = req.user.id;
+    console.log("Request user:", req.user.id);
+    newPost.user_id = req.user.id;
     newPost.filename = req.file.filename;
     console.log(newPost.filename);
 
@@ -58,7 +58,7 @@ const createPost = async (req, res) => {
 
     console.log("Creating a new post:", newPost);
     //console.log("Creating a new post:", post);
-    const result = await addPost(newPost, res);
+    const result = await addPost(newPost, req, res);
     res.status(201).json({ message: "post created ", userId: result });
   } else {
     console.log("validation errors", errors);
