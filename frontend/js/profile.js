@@ -35,11 +35,11 @@ profileName.textContent = user.username;
 const createPictureCards = (pics) => {
   pics.forEach((pic) => {
     // create ul with DOM methods
-    console.log(pic.user_id);
-    if (user.id === pic.user_id) {
+    //console.log(pic);
+    if (user.username === pic.profilename) {
       // clear ul
       ul.innerHTML = "";
-      //console.log("user id right");
+      console.log("user id right");
       const img = document.createElement("img");
       img.src = url + "/thumbnails/" + pic.filename;
       img.classList.add("resp");
@@ -85,17 +85,15 @@ getProfilePic();
 // submit add profile pic form
 addFormProfilePicForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
-  const data = serializeJson(addFormProfilePicForm);
+  const fd = new FormData(addFormProfilePicForm);
   const fetchOptions = {
     method: 'PUT',
     headers: {
-      'Content-Type': 'application/json',
       Authorization: 'Bearer ' + sessionStorage.getItem('token'),
     },
-    body: JSON.stringify(data),
+    body: fd,
   };
-  console.log(fetchOptions);
-  const response = await fetch(url + '/user/profile_pic', fetchOptions);
+  const response = await fetch(url + '/user/' + user.id, fetchOptions);
   const json = await response.json();
   alert(json.message);
   location.href = 'profile.html';

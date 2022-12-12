@@ -21,6 +21,7 @@ const fileFilter = (req, file, cb) => {
   }
   //console.log(file);
 };
+
 const upload = multer({ dest: "profilePics/", fileFilter });
 
 router.get("/", getUsers);
@@ -38,7 +39,7 @@ router.post(
 );
 
 router.put(
-  "/profile_pic",
+  "/:id",
   upload.single("profile_pic"),
   addProfilePic
 );

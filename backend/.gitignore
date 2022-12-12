@@ -4,3 +4,5 @@ uploads/*
 !uploads/.gitkeep
 thumbnails/*
 !thumbnails/.gitkeep
+profilePics/*
+!ProfilePics/.gitkeep

@@ -51,13 +51,13 @@ const addUser = async (user, res) => {
   }
 };
 
-const addUserProfilePic = async (user, res) => {
+const addUserProfilePic = async (pic, user, res) => {
   try {
-    const { profile_pic } = user;
-    const sql = "UPDATE USER SET profile_pic = ? WHERE id = ?";
-    const values = [profile_pic];
+    const sql = "UPDATE user SET profile_pic = ? WHERE id = ?";
+    const values = [pic, user];
     const [result] = await promisePool.execute(sql, values);
     result;
+    console.log(result);
     return result;
   } catch (e) {
     console.error("error", e.message);

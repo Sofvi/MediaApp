@@ -37,18 +37,21 @@ const createUser = async (req, res) => {
 };
 
 const addProfilePic = async (req, res) => {
-  console.log(req.file);
-  console.log(req.body);
+  console.log("Param request", req.params);
+  console.log("Body request", req.body);
+  console.log("File request", req.file);
+  console.log("Filename", req.file.filename);
+  console.log("id", req.params.id);
+
   if (!req.file) {
     res.status(400).json({ message: "file not found OR invalid file" });
   } else {
-    const newPic = req.body;
-    newPic.profile_pic = req.file.profile_pic;
+    const newPic = req.file.filename;
+    const userId = req.params.id;
     console.log(newPic.profile_pic);
-    const result = await userModel.addUserProfilePic(newPic, res);
+    const result = await userModel.addUserProfilePic(newPic, userId, res);
     console.log(result);
     }
-
 };
 
 const modifyUser = async (req, res) => {
