@@ -19,6 +19,16 @@ const getQParam = (param) => {
 //console.log(userData.id);
 const feed = document.querySelector(".feed-list");
 const addPost = document.querySelector("#addPost");
+const userLogin = document.querySelector("#user-login");
+
+/* userLogin.addEventListener("click", ()=>{
+  if (!user && !token) {
+    alert("You need to log in to post!!");
+    location.href = "../html/login.html";
+  } else {
+    location.href = "../html/feed.html";
+  }
+}) */
 addPost.addEventListener("click", () => {
   if (!user && !token) {
     alert("You need to log in to post!!");
