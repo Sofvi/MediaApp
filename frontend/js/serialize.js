@@ -27,15 +27,15 @@
 // Reference: http://es5.github.io/#x15.4.4.21
 // https://tc39.github.io/ecma262/#sec-array.prototype.reduce
 if (!Array.prototype.reduce) {
-  Object.defineProperty(Array.prototype, 'reduce', {
+  Object.defineProperty(Array.prototype, "reduce", {
     value: function (callback /*, initialValue*/) {
       if (this === null) {
         throw new TypeError(
-            'Array.prototype.reduce ' + 'called on null or undefined'
+          "Array.prototype.reduce " + "called on null or undefined"
         );
       }
-      if (typeof callback !== 'function') {
-        throw new TypeError(callback + ' is not a function');
+      if (typeof callback !== "function") {
+        throw new TypeError(callback + " is not a function");
       }
 
       // 1. Let O be ? ToObject(this value).
@@ -59,7 +59,7 @@ if (!Array.prototype.reduce) {
         //    throw a TypeError exception.
         if (k >= len) {
           throw new TypeError(
-              'Reduce of empty array ' + 'with no initial value'
+            "Reduce of empty array " + "with no initial value"
           );
         }
         value = o[k++];
@@ -91,17 +91,17 @@ if (!Array.prototype.reduce) {
 // main function
 function serializeJson(form, protected = false) {
   var data = {},
-      form_arr = [];
+    form_arr = [];
   // export to array
   if (
-      typeof HTMLFormElement === 'function' &&
-      form instanceof HTMLFormElement
+    typeof HTMLFormElement === "function" &&
+    form instanceof HTMLFormElement
   ) {
     for (var i in form.elements) {
       if (
-          form.elements[i] instanceof HTMLInputElement ||
-          form.elements[i] instanceof HTMLSelectElement ||
-          form.elements[i] instanceof HTMLTextAreaElement
+        form.elements[i] instanceof HTMLInputElement ||
+        form.elements[i] instanceof HTMLSelectElement ||
+        form.elements[i] instanceof HTMLTextAreaElement
       )
         form_arr.push({
           name: form.elements[i].name,
@@ -115,13 +115,13 @@ function serializeJson(form, protected = false) {
   // serialize to json
   data = form_arr.reduce(function (r, o) {
     var s = r,
-        arr = o.name.split('.');
+      arr = o.name.split(".");
     arr.forEach((n, k) => {
-      var ck = n.replace(/\[[0-9]*\]$/, '');
+      var ck = n.replace(/\[[0-9]*\]$/, "");
       if (!s.hasOwnProperty(ck))
-        s[ck] = new RegExp('[[0-9]*]$').test(n) ? [] : {};
+        s[ck] = new RegExp("[[0-9]*]$").test(n) ? [] : {};
       if (s[ck] instanceof Array) {
-        var i = parseInt((n.match(new RegExp('([0-9]+)]$')) || []).pop(), 10);
+        var i = parseInt((n.match(new RegExp("([0-9]+)]$")) || []).pop(), 10);
         i = isNaN(i) ? s[ck].length : i;
         s[ck][i] = s[ck][i] || {};
         if (k === arr.length - 1) {
@@ -147,7 +147,7 @@ function serializeJson(form, protected = false) {
 }
 
 // for jquery
-if (typeof jQuery !== 'undefined') {
+if (typeof jQuery !== "undefined") {
   jQuery.fn.extend({
     serializeJson: function () {
       return serializeJson(this.serializeArray());
@@ -156,6 +156,6 @@ if (typeof jQuery !== 'undefined') {
 }
 
 // for nodejs
-if (typeof module !== 'undefined') {
+if (typeof module !== "undefined") {
   module.exports = serializeJson;
 }

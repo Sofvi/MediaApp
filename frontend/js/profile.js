@@ -29,19 +29,20 @@ const createProfilePic = (profilePics) => {
 
 // Display Profile Name
 profileName.innerHTML = "";
-profileName.textContent = user.username;
+profileName.textContent = "@" + user.username;
 
 // create picture cards
 const createPictureCards = (pics) => {
+  // clear ul
+  ul.innerHTML = "";
   pics.forEach((pic) => {
     // create ul with DOM methods
-    //console.log(pic);
+    console.log(pic);
     if (user.username === pic.profilename) {
-      // clear ul
-      ul.innerHTML = "";
       console.log("user id right");
       const img = document.createElement("img");
       img.src = url + "/thumbnails/" + pic.filename;
+      img.alt = user.username + "'s post";
       img.classList.add("resp");
       ul.appendChild(img);
     }

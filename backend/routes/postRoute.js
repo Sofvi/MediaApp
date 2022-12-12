@@ -25,9 +25,8 @@ const fileFilter = (req, file, cb) => {
 };
 const upload = multer({ dest: "uploads/", fileFilter });
 
-router.get("/:id", getPostById);
-
 router.get("/", getPosts);
+router.get("/:id", getPostById);
 
 //*WHEN USING THE VALIDATORS
 

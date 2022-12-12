@@ -81,6 +81,7 @@ const getUsersPosts = async (req, res) => {
 
 const checkToken = (req, res) => {
   res.json({ user: req.user });
+  console.log(req.user);
 };
 module.exports = {
   getUsers,

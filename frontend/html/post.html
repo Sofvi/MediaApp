@@ -1,39 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <script src="https://kit.fontawesome.com/15f800a047.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
-    <script defer src="../js/post.js"></script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <script
+      src="https://kit.fontawesome.com/15f800a047.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+
     <title>Post</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <!-- Top title bar -->
-        <div class="topnavigation">
-            <h3 style="position: center">TravelShare</h3>
-        </div>
+      <!-- Top title bar -->
+      <div class="topnavigation">
+        <h3 style="position: center">TravelShare</h3>
+      </div>
     </header>
     <div class="addPost">
-        <form id="form" action="">  <!--Add action here-->
-            <img id="output"><br><br>
-            <label for="choose-file">Select a file:</label><br><br>
-            <input type="file" id="choose-file" name="choose-file" accept="image/*" onchange="loadFile(event)"><br><br>
-            <label>
-                <input type="text" placeholder="Description"><br><br>
-            </label>
-            <input type="submit">
-        </form>
+      <form
+        id="addFormPost"
+        action="http://localhost:3000/post"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <!--Add action here-->
+        <img id="output" /><br /><br />
+        <label for="choose-file">Select a file:</label><br /><br />
+        <input
+          type="file"
+          id="choose-file"
+          name="image"
+          accept="image/*"
+          onchange="loadFile(event)"
+        /><br /><br />
+        <label>
+          <input
+            type="text"
+            name="description"
+            placeholder="Description"
+          /><br /><br />
+        </label>
+        <label>
+          <input
+            type="text"
+            name="location"
+            placeholder="Location"
+          /><br /><br />
+        </label>
+        <label>
+          <input
+            type="date"
+            name="post_created"
+            placeholder="Posted on"
+          /><br /><br />
+        </label>
+
+        <input type="submit" />
+      </form>
     </div>
     <!-- Bottom nav bar -->
     <div class="bottomnav">
-        <i class="fa-solid fa-house"></i>
-        <i class="fa-solid fa-user"></i>
+      <i class="fa-solid fa-house"></i>
+      <i class="fa-solid fa-user"></i>
     </div>
-</body>
+
+    <script src="../js/post.js"></script>
+    <script src="../js/serialize.js"></script>
+    <script src="../js/check-login.js"></script>
+  </body>
 </html>

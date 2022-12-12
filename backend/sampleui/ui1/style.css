@@ -441,3 +441,10 @@ main #commentText {
   font-weight: bold;
   transition: 0.3s;
 }
+.unliked {
+  content: url("../assets/heart-regular.svg");
+}
+
+.liked {
+  content: url("../assets/heart-solid.svg");
+}

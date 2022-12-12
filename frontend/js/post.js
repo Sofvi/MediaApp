@@ -1,25 +1,44 @@
-'use strict';
+"use strict";
+const url = "http://localhost:3000";
 
-const homeBtn = document.querySelector('.fa-solid.fa-house');
-const profileBtn = document.querySelector('.fa-solid.fa-user');
+//const token = sessionStorage.getItem("token");
+//const user = sessionStorage.getItem("user");
+const addForm = document.querySelector("#addFormPost");
+// const parsedUser = JSON.parse(user);
+// console.log(parsedUser);
 
-const loadFile = function(event) {
-  const output = document.getElementById('output');
-  output.src = URL.createObjectURL(event.target.files[0]);
-  output.onload = function() {
-    URL.revokeObjectURL(output.src); // free memory
+//Creating Form and submitting
+/* const homeFeedIcon = document.querySelector("#feedBtn");
+homeFeedIcon.addEventListener("click", () => {
+  location.href = "../html/feed.html";
+}); */
+
+addForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formData = new FormData(addForm);
+
+  if (!sessionStorage.getItem("token") && !sessionStorage.getItem("user")) {
+    alert("Please login to post");
+    location.href = "../html/login.html";
+  }
+
+  const fetchOptions = {
+    method: "POST",
+    headers: {
+      Authorization: "Bearer " + sessionStorage.getItem("token"),
+    },
+    body: formData,
   };
-};
 
-// Move to home
-homeBtn.addEventListener('click', () => {
-  location.href = 'feed.html';
-  console.log('redirect to home');
+  const response = await fetch(url + "/post", fetchOptions);
+  const json = await response.json();
+
+  console.log("Fetching the json response for post:", json);
+  if (!response.ok) {
+    alert(json.message);
+    return;
+  }
+  //sessionStorage.setItem("user", JSON.stringify(json.user));
+  alert("Your post is created");
+  location.href = "../html/feed.html";
 });
-
-// Move to profile
-profileBtn.addEventListener('click', () => {
-  location.href = 'profile.html';
-  console.log('redirect to feed');
-});
-

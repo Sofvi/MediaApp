@@ -1,6 +1,6 @@
 * {
-    margin: 0;
-    box-sizing: border-box;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 p {
@@ -9,106 +9,160 @@ p {
 
 /**** LOGIN *****/
 .header {
-    width: 100%;
+  width: 100%;
 }
 .topnav {
-    height: 55px;
-    text-align: center;
-    padding: 16px;
-    font-size: 16px;
-    background-color: wheat;
-    font-family: 'Julius Sans One', sans-serif;
+  height: 55px;
+  text-align: center;
+  padding: 16px;
+  font-size: 16px;
+  background-color: wheat;
+  font-family: "Julius Sans One", sans-serif;
 }
 /* Login text */
 .container h1 {
-    margin-top: 140px;
-    font-family: 'Julius Sans One', sans-serif;
-    font-size: 50px;
-    color: white;
+  margin-top: 140px;
+  font-family: "Julius Sans One", sans-serif;
+  font-size: 50px;
+  color: white;
 }
 .login .container {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    position: absolute;
-    z-index: 1;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  height: 100%;
 }
 .bg-image {
-    background-image: url("../img/pic3.jpg");
-    background-size: auto 100%;
-    height: 100%;
-    width: 100%;
-    z-index: 0;
-    top: 0;
-    position: absolute;
-    background-repeat: no-repeat;
-    filter: blur(2px);
-    -webkit-filter: blur(2px);
+  background-image: url("../img/pic3.jpg");
+  background-size: auto 100%;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  top: 0;
+  position: absolute;
+  background-repeat: no-repeat;
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
 }
 /* Login form */
-.loginInfo input[type=text], input[type=password] {
-    width: 100%;
-    margin-top: 10px;
-    font-size: 22px;
-    text-align: center;
-    background: rgba(255,255,255, .2);
-    font-family: "Archivo Narrow", serif;
-    padding: 28px 20px 5px 20px;
-    border: none;
-    border-bottom: 3px solid #949D6A;
+.loginInfo input[type="text"],
+input[type="password"] {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 22px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  font-family: "Archivo Narrow", serif;
+  padding: 28px 20px 5px 20px;
+  border: none;
+  border-bottom: 3px solid #949d6a;
 }
 .loginInfo input::placeholder {
-    color: rgba(0, 0, 0, 0.79);
-    font-weight: bold;
-    font-size: 18px;
-    opacity: 0.8;
+  color: rgba(0, 0, 0, 0.79);
+  font-weight: bold;
+  font-size: 18px;
+  opacity: 0.8;
 }
 /* Login button */
 #loginBtn {
-    background-color: #F6CA83;
-    color: white;
-    padding: 14px 20px;
-    margin: 50px 0 20px;
-    border: none;
-    width: 100%;
-    font-family: 'Archivo Narrow', sans-serif;
-    font-size: 24px;
+  background-color: #f6ca83;
+  color: white;
+  padding: 14px 20px;
+  margin: 50px 0 20px;
+  border: none;
+  width: 100%;
+  font-family: "Archivo Narrow", sans-serif;
+  font-size: 24px;
 }
-#regBtn , #anoBtn {
-    font-size: 20px;
-    font-family: 'Archivo Narrow', sans-serif;
-    text-decoration: none;
-    color: white;
+#regBtn,
+#anoBtn {
+  font-size: 20px;
+  font-family: "Archivo Narrow", sans-serif;
+  text-decoration: none;
+  color: white;
 }
 .loginInfo {
-    margin: 50px 60px 0 60px;
+  margin: 50px 60px 0 60px;
 }
 
- /**** FEED PAGE ****/
+/***** REGISTER PAGE *****/
+.registerInfo input[type="text"],
+input[type="password"] {
+  width: 100%;
+  margin-top: 10px;
+  font-size: 22px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.2);
+  font-family: "Archivo Narrow", serif;
+  padding: 28px 20px 5px 20px;
+  border: none;
+  border-bottom: 3px solid #949d6a;
+}
+.register .container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+}
+#registerBtn {
+  background-color: #f6ca83;
+  color: white;
+  padding: 14px 20px;
+  margin: 20px 0 20px;
+  border: none;
+  width: 100%;
+  font-family: "Archivo Narrow", sans-serif;
+  font-size: 24px;
+}
+.registerInfo input::placeholder {
+  color: rgba(0, 0, 0, 0.79);
+  font-weight: bold;
+  font-size: 18px;
+  opacity: 0.8;
+}
+.registerInfo {
+  margin: 50px 60px 0 60px;
+  height: 100%;
+}
+
+/**** FEED PAGE ****/
 .topnavigation {
-    display: flex;
-    position: fixed;
-    width: 100%;
-    height: 55px;
-    font-size: 20px;
-    background-color: rgba(246, 202, 131, 0.8);
-    font-family: 'Julius Sans One', sans-serif;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 55px;
+  font-size: 20px;
+  background-color: rgba(222, 221, 221, 0.8);
+  font-family: "Julius Sans One", sans-serif;
 }
 .fa-square-plus {
-    margin: 10px;
-    font-size: 32px;
+  position: absolute;
+  margin: 10px;
+  font-size: 30px;
+  color: #383735;
+}
+.fa-right-to-bracket {
+  position: absolute;
+  font-size: 30px;
+  color: #383735;
+  right: 10px;
+  top: 10px;
 }
 .topnavigation h3 {
-    text-align: center;
-    padding: 16px;
-    flex: 1 0 auto;
+  text-align: center;
+  padding: 16px;
+  flex: 1 0 auto;
+  color: black;
 }
-ul {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    position: absolute;
-    list-style-type: none;
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: #aecdf3;
 }
 .content {
     display: flex;
@@ -117,41 +171,97 @@ ul {
     background: #cccccc;
 }
 .bottomnav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    background-color: #F6CA83;
-    overflow: hidden;
-    height: 60px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: rgb(222, 221, 221);
+  overflow: hidden;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
-.fa-house , .fa-user {
-    font-size: 25px;
-    padding: 17px;
+.fa-house,
+.fa-user {
+  font-size: 25px;
+  padding: 17px;
+  color: #383735;
 }
-.bottomnav input[type=text] {
-    border: 1px solid #ccc;
-    border-radius: 20px 0 0 20px;
-    width: 140px;
-    height: 35px;
-    padding: 10px;
-    font-size: 17px;
+.bottomnav input[type="text"] {
+  border: 1px solid #ccc;
+  border-radius: 20px 0 0 20px;
+  box-shadow: 0 3px #818181;
+  width: 140px;
+  height: 35px;
+  padding: 10px;
+  font-size: 17px;
 }
 .bottomnav button {
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-left: none;
-    margin-left: -8px;
-    font-size: 17px;
-    background-color: white;
-    height: 35px;
-    width: 35px;
-    padding: 6px;
-    margin-top: 12px;
-    border-radius: 0 20px 20px 0;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-left: none;
+  box-shadow: 1px 3px #818181;
+  margin-left: -8px;
+  font-size: 17px;
+  background-color: white;
+  height: 35px;
+  width: 35px;
+  padding: 6px;
+  margin-top: 12px;
+  border-radius: 0 20px 20px 0;
+}
+.card {
+  margin: 0.8rem;
+  padding: 0.5rem;
+  border: 3px solid #cccccc;
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: 5px 8px rgba(0, 0, 0, 0.19);
+}
+.cardProfileImg {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  padding: 8px;
+}
+.cardTopDiv {
+  display: flex;
+  flex-direction: row;
+}
+.text-container {
+  padding: 10px;
+  font-family: "Archivo Narrow", sans-serif;
+}
+.likes-comments {
+  display: flex;
+  flex-direction: row;
+}
+.likes-comments i {
+  padding: 8px;
+  font-size: 24px;
+}
+.likes {
+  font-family: "Archivo Narrow", serif;
+  font-size: 16px;
+  padding-left: 8px;
+}
+.comment {
+  border-radius: 25%;
+}
+#picList {
+  z-index: -1;
+  background-image: url("../img/pic4.jpg");
+  background-size: auto 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  padding: 4rem 0.5rem;
+  position: absolute;
+  list-style-type: none;
+}
+.description {
+  font-family: "Archivo Narrow", sans-serif;
+  padding: 5px;
 }
 
 .card {
@@ -206,166 +316,279 @@ ul {
 
 /***** POST PAGE *****/
 .addPost {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .addPost #form {
-    position: relative;
-    padding-top: 120px;
+  position: relative;
+  padding-top: 120px;
 }
 .addPost label {
-    font-family: 'Archivo Narrow', sans-serif;
-    font-size: 20px;
+  font-family: "Archivo Narrow", sans-serif;
+  font-size: 20px;
+}
+.addPost label input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #cccccc;
 }
 .addPost label input {
     width: 100%;
     padding: 0.4rem;
 }
 #output {
-    max-width: 250px;
-    margin: 0;
+  max-width: 250px;
+  margin: 0;
+}
+.addPost input[type="submit"] {
+  background-color: #f6ca83;
+  color: white;
+  margin-top: -15px;
+  padding: 5px;
+  border: 2px solid #cccccc;
+  width: 100%;
+  font-family: "Archivo Narrow", sans-serif;
+  font-size: 22px;
 }
 
 /**** COMMENT PAGE *****/
 main #commentText {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    position: absolute;
-    margin-top: 500px;
-    margin-left: 8%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  position: absolute;
+  margin-top: 500px;
+  margin-left: 8%;
 }
-#commentText input[type=text] {
-    padding: 20px;
+#commentText input[type="text"] {
+  padding: 20px;
 }
-
 #sendCommentBtn {
-    height: 60px;
-    width: 100px;
-    margin-top: 10px;
+  height: 60px;
+  width: 100px;
+  margin-top: 10px;
 }
 .commentContent {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url("../img/pic4.jpg");
+  background-size: auto 100%;
+  width: 100%;
+  background-repeat: no-repeat;
 }
-
 .cardDiv {
-    padding: 4rem 0.5rem;
+  padding: 4rem 0.5rem;
 }
-
-.commentBoxDiv {
-    display: flex;
-    flex-direction:unset;
-    border: 2px solid #cccccc;
-    font-family: 'Archivo Narrow', sans-serif;
-    font-size: 14px;
-    margin-bottom: 8px;
-    max-height: 130px;
-    overflow: scroll;
+.cardDiv h3 {
+  font-family: "Archivo Narrow", sans-serif;
+  padding: 10px;
 }
-
-div::-webkit-scrollbar {
-    display: none; 
-  }
-
-.commentBoxDiv ul {
-    position: static;
-}
-
-#addCommentForm {
-    display: flex;
-    flex-direction: row;
+.commentDiv {
+  display: flex;
+  flex-direction: row;
 }
 
 .commentDiv input {
-    width: 100%;
-    padding: 8px;
+  width: 100%;
+  padding: 8px;
 }
 
 .commentDiv i {
-    padding: 8px;
+  padding: 8px;
+}
+.closeComment {
+  position: absolute;
+  top: 80px;
+  right: 32px;
+  color: #cccccc;
+  font-size: 42px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
 /***** PROFILE PAGE *****/
+.profileCard {
+  display: flex;
+  align-items: center;
+  margin: auto;
+  flex-direction: column;
+  max-width: 360px;
+}
+
 .contains {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    z-index: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 0;
+  width: 95%;
+}
+#logo {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.allPhotos img {
+  object-fit: cover;
+  width: 6.5rem;
+  height: 6.5rem;
+  margin: 4px;
 }
 .userInfo {
-    height: 120px;
-    margin-top: 70px;
-    padding: 0.5rem;
-    border: 2px solid #cccccc;
-    border-radius: 0.5rem 0.5rem 0 0;
-    width: 90%;
-    background-color: white;
+  display: flex;
+  justify-content: unset;
+  height: 120px;
+  margin-top: 70px;
+  padding: 0.5rem;
+  border: 2px solid #cccccc;
+  border-radius: 0.5rem 0.5rem 0 0;
+  width: 100%;
+  background-color: white;
 }
 .profileTopDiv {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 .profileTopDiv .cardProfileImg {
-    width: 100px;
+  width: 100px;
+  height: 100px;
 }
 .profileTopDiv h3 {
-    margin-left: 20px;
+  font-family: "Archivo Narrow", sans-serif;
+  font-size: 24px;
+  margin-left: 20px;
+  top: 50%;
+}
+#profileNameDiv {
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+}
+
+#addProfilePicForm {
+  padding: 2rem;
+  width: 150px;
 }
 .pics {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    z-index: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 0;
+}
+.picsDiv {
+  width: fit-content;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  flex-direction: row;
+  position: inherit;
 }
 .allPhotos {
-    border-radius: 0 0 0.5rem 0.5rem;
-    display: flex;
-    justify-content: space-evenly;
-    width: 90%;
-    height: 450px;
-    border: 2px solid #cccccc;
-    z-index: 0;
+  border-radius: 0 0 0.5rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  height: 450px;
+  width: 100%;
+  padding-left: 0px;
+  overflow: scroll;
+  border: 2px solid #cccccc;
+  border-top: 0px;
+  z-index: 0;
+  position: inherit;
+  flex-wrap: wrap;
 }
+
+.allPhotos::-webkit-scrollbar {
+  display: none;
+}
+
 .profileImg {
-    width: 100px;
-    height: 100px;
-    padding: 5px;
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+}
+.fa-solid.fa-circle-plus {
+  margin-left: 5rem;
+  margin-top: 4.5rem;
+  position:fixed;
+}
+.imageList {
+  margin: 5px;
+  background-color: #cccccc;
+  text-align: center;
+  width: 25%;
+  height: 20%;
 }
 .popup {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.65);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.65);
 }
 .popup-content {
-    margin-top: 77px;
-    margin-left: 5%;
-    background-color: white;
-    display: block;
-    width: 90%;
-    height: 75%;
+  margin-top: 77px;
+  margin-left: 5%;
+  background-color: white;
+  display: block;
+  width: 90%;
+  height: 75%;
+  border-radius: 6px;
 }
 .popup-content #form {
-    position: relative;
-    padding: 10%;
-    font-family: 'Archivo Narrow', sans-serif;
+  position: relative;
+  padding: 10%;
+  font-family: "Archivo Narrow", sans-serif;
 }
 .popup .closePopup {
-    position: absolute;
-    top: 80px;
-    right: 32px;
-    color: #cccccc;
-    font-size: 42px;
-    font-weight: bold;
-    transition: 0.3s;
+  position: absolute;
+  top: 80px;
+  right: 32px;
+  color: #cccccc;
+  font-size: 42px;
+  font-weight: bold;
+  transition: 0.3s;
 }
 
-
-
+/***** MEDIA QUERY *****/
+@media (min-width: 481px) and (max-width: 1000px) {
+  /* FEED */
+  .card {
+    max-width: 80%;
+    margin-left: 10%;
+  }
+  /* POST */
+  .addPost form {
+    width: 80%;
+    margin-top: 100px;
+  }
+  .addPost #select {
+    font-size: 40px;
+    margin-left: 10%;
+  }
+  .addPost #choose-file {
+    font-size: 30px;
+    margin-left: 10%;
+  }
+  .addPost label input[type="text"] {
+    margin-top: 80px;
+    padding: 30px;
+    margin-right: 30px;
+    font-size: 24px;
+  }
+  #output {
+    max-width: 50%;
+  }
+  .addPost input[type="submit"] {
+    margin-top: 30px;
+    padding: 10px;
+    width: 100%;
+    font-size: 28px;
+  }
+}
