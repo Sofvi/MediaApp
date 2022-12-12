@@ -443,7 +443,7 @@ main #commentText {
   padding: 0.5rem;
   border: 2px solid #cccccc;
   border-radius: 0.5rem 0.5rem 0 0;
-  width: 100%;
+  width: 340px;
   background-color: white;
 }
 .profileTopDiv {
@@ -486,11 +486,8 @@ main #commentText {
 }
 .allPhotos {
   border-radius: 0 0 0.5rem 0.5rem;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
   height: 450px;
-  width: 100%;
+  width: 340px;
   padding-left: 0px;
   overflow: scroll;
   border: 2px solid #cccccc;
@@ -554,6 +551,7 @@ main #commentText {
   font-size: 42px;
   font-weight: bold;
   transition: 0.3s;
+  z-index: 100;
 }
 
 /***** MEDIA QUERY *****/

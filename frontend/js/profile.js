@@ -8,7 +8,7 @@ const cardProfileImg = document.querySelector(".cardProfileImg");
 const profileName = document.querySelector("#profileName");
 const profilePicBtn = document.querySelector(".profileTopDiv .cardProfileImg");
 const popup = document.getElementById("myPopup");
-const close = document.getElementsByClassName("closePopup");
+const closeBtn = document.getElementsByClassName("closePopup");
 const addFormProfilePicForm = document.querySelector('#addProfilePicForm');
 
 
@@ -48,6 +48,13 @@ const createPictureCards = (pics) => {
     }
   });
 };
+
+/*
+if( ul.length === 0) {
+  const h2 = document.createElement("h2");
+  ul.appendChild(h2);
+  h2.innerText = "No posts yet. Start posting!";
+}*/
 
 // AJAX call for posts
 const getPic = async () => {
@@ -119,7 +126,7 @@ profilePicBtn.onclick = function () {
 };
 
 // Close the popup window
-close.onclick = function () {
+closeBtn.onclick = function () {
   popup.style.display = "none";
   console.log("closing the popup");
 };
