@@ -33,7 +33,7 @@ addForm.addEventListener("submit", async (e) => {
   const response = await fetch(url + "/post", fetchOptions);
   const json = await response.json();
 
-  console.log(" JSON log:", json);
+  console.log("Fetching the json response for post:", json);
   if (!response.ok) {
     alert(json.message);
     return;

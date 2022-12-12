@@ -17,7 +17,7 @@ const getQParam = (param) => {
 //const userData = JSON.parse(user);
 
 //console.log(userData.id);
-
+const feed = document.querySelector(".feed-list");
 const addPost = document.querySelector("#addPost");
 addPost.addEventListener("click", () => {
   if (!user && !token) {
@@ -29,12 +29,13 @@ addPost.addEventListener("click", () => {
 });
 
 const createFeedPost = (posts) => {
-  const feed = document.querySelector(".feed-list");
+  //const feed = document.querySelector(".feed-list");
   //console.log(posts);
   feed.innerHTML = "";
 
   posts.forEach((post) => {
     num_likes = post.num_likes;
+    //console.log(post);
     feed.innerHTML += `
      <div class="card">
   <div class="cardTopDiv">
@@ -81,6 +82,8 @@ const getPics = async () => {
     const feedPost = await response.json();
     console.log(feedPost);
     createFeedPost(feedPost);
+    likeUnlike();
+    searchOption(feedPost);
   } catch (e) {
     console.log(e.message);
   }
@@ -140,3 +143,70 @@ const likeUnlike = () => {
   });
 };
 likeUnlike();
+
+//TODO* implement the search option
+// change url when uploading to server
+const searchBtn = document.querySelector("#searchBtn");
+const searchItem = document.querySelector("#search-item");
+const searchResult = document.querySelector("#search-result");
+
+const createSearchCard = (searchPost) => {
+  searchResult.innerHTML += `
+     <div class="card">
+  <div class="cardTopDiv">
+    <img
+              src="https://place-puppy.com/400x400"
+              alt="Dog"
+              class="cardProfileImg"
+            />
+            <div class="text-container">
+            <h3>${searchPost.profilename}</h3>
+            <p class="location">${searchPost.location}</p>
+          </div>
+  </div>
+  <img
+      src="${url + "/thumbnails/" + searchPost.filename}"
+      alt="${searchPost.profilename}'s post"
+      style="width: 100%"
+    />
+  <div class="container">
+    <div class="likes-comments">
+      <i id="like-btn" class="fa-regular fa-heart"></i>
+      <i id="comment-btn" class="fa-regular fa-comment"></i>
+    </div>
+    <p class="likes">23 likes</p>
+    <p class="description">${searchPost.description}</p>
+    
+  </div>
+</div>`;
+};
+
+const searchOption = (feedSearch) => {
+  searchItem.addEventListener("keyup", (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      searchBtn.click();
+    }
+  });
+
+  searchBtn.addEventListener("click", () => {
+    searchResult.innerHTML = "";
+    const userInput = searchItem.value;
+    console.log(userInput);
+    let array = [];
+
+    for (let i = 0; i < feedSearch.length; i++) {
+      const header = feedSearch[i].profilename.toLowerCase();
+      console.log(header);
+
+      if (header.includes(userInput)) {
+        console.log("Header includes userinput");
+        createSearchCard(feedSearch[i]);
+        feed.innerHTML = "";
+        //searchResult.style.display = "flex";
+        array.push(feedSearch[i]);
+      }
+    }
+    searchItem.value = "";
+  });
+};
