@@ -33,11 +33,14 @@ const createFeedCards = (pics) => {
   });
 };
 // Move to login if not logged in
-// TODO: ADD FUNCTION TO CHECK IF LOGGED IN
 loginBtn.addEventListener('click', () => {
-  location.href = '../html/login.html';
-  console.log('redirect to login')
-})
+  if (!user && !token) {
+    location.href = '../html/login.html';
+  } else {
+    loginBtn.style.display = 'none';
+  }
+});
+
 // Move to profile
 profileBtn.addEventListener('click', () => {
   location.href = '../html/profile.html';

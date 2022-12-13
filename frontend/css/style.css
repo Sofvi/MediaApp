@@ -152,10 +152,10 @@
     color: black;
 }
 .content {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background: #aecdf3;
+    background-image: url("../img/pic4.jpg");
+    background-size: auto 100%;
+    width: 100%;
+    background-repeat: no-repeat;
 }
 .bottomnav {
     display: flex;

@@ -1,6 +1,6 @@
 'use strict';
 
-const url = "http://localhost:3005"; // change url when uploading to server
+const url = "http://localhost:3000"; // change url when uploading to server
 
 // select existing html elements
 const addUserForm = document.querySelector('#add-user-form');
@@ -21,13 +21,14 @@ addUserForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + "/auth/register", fetchOptions);
   const json = await response.json();
   alert(json.message);
+  location.href = '../html/login.html';
 });
 
 // Move to login
 loginBtn.addEventListener('click', (event) => {
   // do not submit the form anywhere (no page refresh)
   event.preventDefault();
-  location.href = 'login.html';
+  location.href = '../html/login.html';
   console.log('redirect to login');
 });
 
@@ -35,6 +36,6 @@ loginBtn.addEventListener('click', (event) => {
 homeBtn.addEventListener('click', (event) => {
   // do not submit the form anywhere (no page refresh)
   event.preventDefault();
-  location.href = 'feed.html';
+  location.href = '../html/feed.html';
   console.log('redirect to home');
 });
