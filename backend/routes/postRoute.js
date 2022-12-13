@@ -13,6 +13,7 @@ const {
   getPostLikes,
 } = require("../controllers/postController");
 const router = require("./authRoute");
+const { addLikeToPost } = require("../controllers/likeController");
 
 const fileFilter = (req, file, cb) => {
   const acceptedTypes = ["image/jpeg", "image/png", "image/gif"];
@@ -48,7 +49,8 @@ router.put(
 );
 router.get("/:id/comment", getPostComments);
 
-router.get("/:id/like", getPostLikes);
+/* router.post("/like/:id",addLikeToPost);
+router.get("like/:id", getPostLikes); */
 router.delete("/:id", removePost);
 
 module.exports = router;

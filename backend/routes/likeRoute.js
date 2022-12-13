@@ -11,8 +11,8 @@ const {
 const { get } = require("./userRoute");
 
 //router.get("/", getAllLike);
-router.get("/:id/like", getPostsLike);
-router.post("/:id/like", addLikeToPost);
-router.delete("/:id/like", deleteLikeToPost);
+router.get("/like/:id", getAllLike);
+router.post("/like/:id",addLikeToPost);
+//router.delete("/:id/like", deleteLikeToPost);
 
 module.exports = router;

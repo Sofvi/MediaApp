@@ -15,7 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../css/style.css" />
-    <script defer src="../js/feed.js"></script>
+
     <title>Feed</title>
   </head>
   <body>
@@ -31,9 +31,10 @@
       </div>
     </header>
     <div class="content">
-      <ul class="feed-list" id="picList">
+      <div class="feed-list" id="picList">
         <!-- js creates list here -->
         <!-- Just for looks now -->
+        <!--
         <div class="card">
           <div class="cardTopDiv">
             <img
@@ -105,15 +106,15 @@
           />
           <div class="container">
             <div class="likes-comments">
-              <!--Added id to implement the like unlike function-->
+              Added id to implement the like unlike function
               <i id="like-unlike" class="fa-regular fa-heart"></i>
               <i class="fa-regular fa-comment"></i>
             </div>
             <p class="likes">23 likes</p>
             <p class="description">description renders here</p>
           </div>
-        </div>
-      </ul>
+        </div>-->
+      </div>
       <div id="search-result"></div>
       <!-- Bottom nav bar -->
       <div class="bottomnav">
@@ -136,5 +137,7 @@
         <i class="fa-solid fa-user"></i>
       </div>
     </div>
+
+    <script src="../js/feed.js"></script>
   </body>
 </html>
