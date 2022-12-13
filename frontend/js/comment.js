@@ -13,6 +13,8 @@ const addForm = document.querySelector('#addCommentForm');
 
 // Get user data
 const user = JSON.parse(sessionStorage.getItem('user'));
+const token = sessionStorage.getItem('token');
+
 
 // Display Profile Name
 profileName.innerHTML = "";
@@ -38,9 +40,9 @@ const displayComments = (comments) => {
 };
 
 const displayPost = (posts) => {
-  //commentUl.innerHTML = "";
+  img.src = "";
   posts.forEach((post) => {
-    //img.src = url + "/thumbnails/" + post.filename;
+    img.src = url + "/thumbnails/" + post.filename;
   });
 };
 
