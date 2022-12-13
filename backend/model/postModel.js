@@ -5,8 +5,10 @@ const promisePool = pool.promise();
 const getAllPosts = async (res) => {
   try {
     const sql =
-      "SELECT post.id, location, description, filename,post_created, user.username AS profilename FROM post JOIN user on post.user_id = user.id;";
+      "select username as profilename,user.id ,post.id,post.location, post.description,post.filename, post.post_created, count(userlike.user_id) as like_num from user join post on post.user_id = user.id left join userlike on userlike.post_id = post.id group by post.id;";
+    console.log(sql);
     const [rows] = await promisePool.query(sql);
+    console.log("Rows values:  ", rows);
     return rows;
   } catch (e) {
     console.error("error", e.message);
@@ -18,6 +20,7 @@ const getPost = async (id, res) => {
   try {
     const sql =
       "SELECT id, filename, description, post_created, location, (SELECT count(likes_num) from userlike WHERE userlike.post_id = post.id) as num_likes ,(SELECT count(*) from comment WHERE comment.post_id = post.id) as num_comments, (SELECT user.username from user WHERE user.id = post.user_id) as owner FROM post WHERE id = ?";
+
     const [rows] = await promisePool.query(sql, id);
     console.log("Rows", rows);
     return rows[0];
@@ -57,9 +60,7 @@ const addPost = async (user_post, req, res) => {
     if (coords == undefined) {
       coords = null;
     }
-    // if (user_id == undefined) {
-    //   user_id = null;
-    // }
+
     const sql =
       "INSERT INTO post(user_id,filename, description,post_created,location, coords) VALUE (?,?,?,?,?,?)";
     const values = [

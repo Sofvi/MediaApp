@@ -1,10 +1,9 @@
 "use strict";
 
 const url = "http://localhost:3000"; // change url when uploading to server
-
+let likeCounter = 0;
 const token = sessionStorage.getItem("token");
 const user = sessionStorage.getItem("user");
-let num_likes = 0;
 
 const getQParam = (param) => {
   const queryString = window.location.search;
@@ -31,7 +30,7 @@ userLogin.addEventListener("click", () => {
     location.href = "../html/feed.html";
   }
 });
-
+/* 
 loginBtn.addEventListener("click", () => {
   location.href = "../html/login.html";
   console.log("redirect to login");
@@ -49,12 +48,12 @@ profileBtn.addEventListener("click", () => {
     likeBtn.className = "fa-regular fa-heart";
     console.log("like clicked");
   }
-}); */
+}); 
 
 commentBtn.addEventListener("click", () => {
   location.href = "../html/comment.html";
   console.log("redirect to comment");
-});
+}); */
 
 addPost.addEventListener("click", () => {
   if (!user && !token) {
@@ -68,8 +67,12 @@ addPost.addEventListener("click", () => {
 const createFeedPost = (posts) => {
   feed.innerHTML = "";
   posts.forEach((post) => {
-    num_likes = post.num_likes;
+    if (post.num_like == null || post.num_like == 0) {
+      post.num_like = 1;
+    }
+    likeCounter = post.num_like;
 
+    console.log(post);
     feed.innerHTML += `
      <div class="card">
   <div class="cardTopDiv">
@@ -93,7 +96,8 @@ const createFeedPost = (posts) => {
       <i  class="fa-regular fa-heart"></i>
       <i  class="fa-regular fa-comment"></i>
       </div>
-      <p class="likes">23 likes</p>
+
+      <p class ="likes">Likes:  ${post.like_num}</>
       <p class="description">${post.description}</p>
       
       </div>
@@ -137,13 +141,17 @@ const createFeedPost = (posts) => {
         fetchOptions
       );
       const json = await response.json();
+      likeCounter++;
+      console.log("Likecounter: ", likeCounter);
+
+      totalLikes.innerHTML = "${likeCounter}";
     } catch (e) {
       console.log(e.message);
     }
   });
 };
 
-const getPics = async () => {
+const getFeedPost = async () => {
   try {
     const fetchOptions = {
       headers: {
@@ -160,7 +168,7 @@ const getPics = async () => {
     console.log(e.message);
   }
 };
-getPics();
+getFeedPost();
 
 //TODO* implement the search option
 // change url when uploading to server
@@ -192,7 +200,7 @@ const createSearchCard = (searchPost) => {
       <i id="like-btn" class="fa-regular fa-heart"></i>
       <i id="comment-btn" class="fa-regular fa-comment"></i>
     </div>
-    <p class="likes">23 likes</p>
+    <p class="likes">${searchPost.like_num}</p>
     <p class="description">${searchPost.description}</p>
     
     </div>

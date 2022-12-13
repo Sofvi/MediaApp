@@ -47,14 +47,14 @@ const addLike = async (postId, userId) => {
         "delete from userlike where user_id = ? and post_id = ?",
         [userId, postId]
       );
-      console.log(deleteRow);
+      //console.log(deleteRow);
       return deleteRow;
     }
     const [insertLike] = await promisePool.execute(
       "INSERT INTO userlike (user_id, post_id, likes_num ) VALUES (?, ?, ?)",
       [userId, postId, 1]
     );
-    console.log("Log mathi", insertLike);
+    //console.log("Log mathi", insertLike);
     return insertLike;
   } catch (e) {
     console.error("Added like", e.message);
