@@ -6,9 +6,7 @@ const getAllPosts = async (res) => {
   try {
     const sql =
       "select username as profilename,user.id ,post.id,post.location, post.description,post.filename, post.post_created, count(userlike.user_id) as like_num from user join post on post.user_id = user.id left join userlike on userlike.post_id = post.id group by post.id;";
-    console.log(sql);
     const [rows] = await promisePool.query(sql);
-    console.log("Rows values:  ", rows);
     return rows;
   } catch (e) {
     console.error("error", e.message);
@@ -80,17 +78,17 @@ const addPost = async (user_post, req, res) => {
     res.status(500).send(e.message);
   }
 };
-const editPost = async (post, res) => {
+const editPost = async (post, user, res) => {
   try {
-    console.log("Modify post:", post);
-    const { description, post_created, location, id } = post;
+    console.log( "USER:", user, "Modify post:", post);
+    const { description, location, id } = post;
     const sql =
-      "UPDATE post SET description = ?, post_created = ?, file_location = ? WHERE id = ? ";
-    const values = [description, post_created, location, id];
+      "UPDATE post SET description = ?, post_edited = CURRENT_TIMESTAMP, location = ? WHERE id = ? AND user_id = ? ";
+    const values = [description, location, id, user.id];
     const [result] = await promisePool.execute(sql, values);
-    console.log("Result", result);
+    console.log("Result from edit post: ", result);
     return result;
-  } catch (e) {
+  } catch (e) { 
     res.status(501).send(e.message);
   }
 };

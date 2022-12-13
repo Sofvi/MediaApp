@@ -67,15 +67,16 @@ const createPost = async (req, res) => {
 };
 const modifyPost = async (req, res) => {
   const post = req.body;
+  const user = req.user;
+  console.log("Log for user", user);
   console.log("Posts: ", post);
   if (req.params.id) {
     post.id = req.params.id;
   }
 
-  const result = await editPost(post, res);
-  console.log(result);
+  const result = await editPost(post, user, res);
   if (result.affectedRows > 0) {
-    res.send("Post modified!!");
+    res.json({ message: "Post modified!!" });
   } else {
     res.sendStatus(502);
   }

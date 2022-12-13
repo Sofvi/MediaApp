@@ -53,7 +53,7 @@ const register = async (req, res) => {
 };
 
 const logout = (req, res) => {
-  console.log("some user logged out");
+  console.log("User has logged out");
   res.json({ message: "logged out" });
 };
 

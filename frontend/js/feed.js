@@ -4,6 +4,8 @@ const url = "http://localhost:3000"; // change url when uploading to server
 let likeCounter = 0;
 const token = sessionStorage.getItem("token");
 const user = sessionStorage.getItem("user");
+const parsedUser = JSON.parse(user);
+console.log(parsedUser);
 
 const getQParam = (param) => {
   const queryString = window.location.search;
@@ -17,7 +19,7 @@ const addPost = document.querySelector("#addPost");
 const userLogin = document.querySelector("#user-login");
 
 const profileBtn = document.querySelector(".fa-solid.fa-user");
-//const postBtn = document.querySelector('.fa-solid.fa-square-plus');
+
 const likeBtn = document.querySelector(".fa-regular fa-heart");
 const commentBtn = document.querySelector(".fa-regular.fa-comment");
 const loginBtn = document.querySelector(".fa-right-to-bracket");
@@ -49,11 +51,7 @@ profileBtn.addEventListener("click", () => {
     console.log("like clicked");
   }
 }); 
-
-commentBtn.addEventListener("click", () => {
-  location.href = "../html/comment.html";
-  console.log("redirect to comment");
-}); */
+*/
 
 addPost.addEventListener("click", () => {
   if (!user && !token) {
@@ -67,12 +65,8 @@ addPost.addEventListener("click", () => {
 const createFeedPost = (posts) => {
   feed.innerHTML = "";
   posts.forEach((post) => {
-    if (post.num_like == null || post.num_like == 0) {
-      post.num_like = 1;
-    }
-    likeCounter = post.num_like;
-
     console.log(post);
+    likeCounter = post.like_num;
     feed.innerHTML += `
      <div class="card">
   <div class="cardTopDiv">
@@ -84,13 +78,17 @@ const createFeedPost = (posts) => {
             <div class="text-container">
             <h3>${post.profilename}</h3>
             <p class="location">${post.location}</p>
+            
           </div>
   </div>
+  
+  
   <img
       src="${url + "/thumbnails/" + post.filename}"
       alt="${post.profilename}'s post"
       style="width: 100%"
       />
+      </a>
       <div class="container">
       <div class="likes-comments">
       <i  class="fa-regular fa-heart"></i>
@@ -101,15 +99,37 @@ const createFeedPost = (posts) => {
       <p class="description">${post.description}</p>
       
       </div>
+      <div> <a href="../html/edit-post.html?id=${
+        post.id
+      }"><i class="fa fa-edit" style="color: #aca891"></i> </a></div>
       </div>`;
   });
+
+  // if (likeBtn.className === ".fa-regular fa-heart") {
+  //   likeBtn.className = "fa-solid fa-heart";
+  // } else {
+  //   likeBtn.className = "fa-regular fa-heart";
+  // }
+  // const editPost = document.querySelector(".fa.fa-edit");
+  // //console.log(editPost);
+  // editPost.addEventListener("click", () => {
+  //   alert("Redirecting to edit post");
+  //   location.href = "../html/edit-post.html?id=${post.id}";
+  // });
+
+  // editPost.addEventListener("click", () => {
+  //   alert("You are redirected to edit the post");
+  //   location.href = "../edit-post.html";
+  // });
 
   const likeButton = document.querySelectorAll(".fa-regular.fa-heart");
   const totalLikes = document.querySelectorAll(".likes");
 
   likeButton.forEach((like, index) => {
     like.addEventListener("click", async () => {
-      console.log("cliked", index, posts[index].id);
+      console.log("clicked", index, posts[index].id);
+      likeButton.className = "fa-solid.fa-heart";
+
       try {
         const fetchOptions = {
           method: "POST",
@@ -128,6 +148,8 @@ const createFeedPost = (posts) => {
     });
   });
 
+  //*Gets the total number of likes and render*/
+
   totalLikes.forEach(async (like, index) => {
     try {
       const fetchOptions = {
@@ -142,7 +164,7 @@ const createFeedPost = (posts) => {
       );
       const json = await response.json();
       likeCounter++;
-      console.log("Likecounter: ", likeCounter);
+      //console.log("Likecounter: ", likeCounter);
 
       totalLikes.innerHTML = "${likeCounter}";
     } catch (e) {
@@ -151,6 +173,7 @@ const createFeedPost = (posts) => {
   });
 };
 
+//*AJAX to get the feedpost
 const getFeedPost = async () => {
   try {
     const fetchOptions = {
@@ -170,8 +193,8 @@ const getFeedPost = async () => {
 };
 getFeedPost();
 
-//TODO* implement the search option
-// change url when uploading to server
+//* SEARCH Functionality
+
 const searchBtn = document.querySelector("#searchBtn");
 const searchItem = document.querySelector("#search-item");
 const searchResult = document.querySelector("#search-result");
@@ -189,6 +212,7 @@ const createSearchCard = (searchPost) => {
             <h3>${searchPost.profilename}</h3>
             <p class="location">${searchPost.location}</p>
           </div>
+
   </div>
   <img
       src="${url + "/thumbnails/" + searchPost.filename}"
@@ -207,6 +231,8 @@ const createSearchCard = (searchPost) => {
     </div>`;
 };
 const searchOption = (feedSearch) => {
+  //*Function to handle the keyboard press
+
   searchItem.addEventListener("keyup", (e) => {
     if (e.keyCode === 13) {
       e.preventDefault();
@@ -231,6 +257,7 @@ const searchOption = (feedSearch) => {
         array.push(feedSearch[i]);
       }
     }
+    //Emptying the search field
     searchItem.value = "";
   });
 };
