@@ -2,10 +2,10 @@
 const pool = require("../database/db-config");
 const promisePool = pool.promise();
 
-const getAllPosts = async (postId, res) => {
+const getAllPosts = async (res) => {
   try {
-    const sql = "SELECT * FROM post";
-
+    const sql =
+      "select username as profilename,user.id ,post.id,post.location, post.description,post.filename, post.post_created, count(userlike.user_id) as like_num from user join post on post.user_id = user.id left join userlike on userlike.post_id = post.id group by post.id;";
     const [rows] = await promisePool.query(sql);
     return rows;
   } catch (e) {
@@ -18,8 +18,9 @@ const getPost = async (id, res) => {
   try {
     const sql =
       "SELECT id, filename, description, post_created, location, (SELECT count(likes_num) from userlike WHERE userlike.post_id = post.id) as num_likes ,(SELECT count(*) from comment WHERE comment.post_id = post.id) as num_comments, (SELECT user.username from user WHERE user.id = post.user_id) as owner FROM post WHERE id = ?";
+
     const [rows] = await promisePool.query(sql, id);
-    console.log(rows);
+    console.log("Rows", rows);
     return rows[0];
   } catch (e) {
     console.error("error", e.message);
@@ -48,7 +49,7 @@ const getLikesForPost = async (id, res) => {
   }
 };
 
-const addPost = async (user_post, res) => {
+const addPost = async (user_post, req, res) => {
   try {
     let { user_id, filename, description, post_created, location, coords } =
       user_post;
@@ -57,6 +58,7 @@ const addPost = async (user_post, res) => {
     if (coords == undefined) {
       coords = null;
     }
+
     const sql =
       "INSERT INTO post(user_id,filename, description,post_created,location, coords) VALUE (?,?,?,?,?,?)";
     const values = [
@@ -76,17 +78,17 @@ const addPost = async (user_post, res) => {
     res.status(500).send(e.message);
   }
 };
-const editPost = async (post, res) => {
+const editPost = async (post, user, res) => {
   try {
-    console.log("Modify post:", post);
-    const { description, post_created, location, id } = post;
+    console.log( "USER:", user, "Modify post:", post);
+    const { description, location, id } = post;
     const sql =
-      "UPDATE post SET description = ?, post_created = ?, file_location = ? WHERE id = ? ";
-    const values = [description, post_created, location, id];
+      "UPDATE post SET description = ?, post_edited = CURRENT_TIMESTAMP, location = ? WHERE id = ? AND user_id = ? ";
+    const values = [description, location, id, user.id];
     const [result] = await promisePool.execute(sql, values);
-    console.log("Result", result);
+    console.log("Result from edit post: ", result);
     return result;
-  } catch (e) {
+  } catch (e) { 
     res.status(501).send(e.message);
   }
 };

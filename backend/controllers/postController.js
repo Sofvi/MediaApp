@@ -25,12 +25,12 @@ const getPosts = async (req, res) => {
 
 //Get post by id
 const getPostById = async (req, res) => {
-  console.log(req.params.id);
   //console.log(req.body);
   const postId = req.params.id;
+  console.log("The id for post: ", postId);
   const post = await getPost(postId, res);
   console.log(post);
-
+  //If the post id is unavailable throws an error, the least usable id is 9
   if (post) {
     post.post_created = post.post_created.toISOString().split("T")[0];
     res.json(post);
@@ -48,6 +48,8 @@ const createPost = async (req, res) => {
     await makeThumbnail(req.file.path, req.file.filename);
     newPost.coords = JSON.stringify(await getCoordinates(req.file.path));
 
+    console.log("Request user:", req.user.id);
+    newPost.user_id = req.user.id;
     newPost.filename = req.file.filename;
     console.log(newPost.filename);
 
@@ -56,30 +58,25 @@ const createPost = async (req, res) => {
 
     console.log("Creating a new post:", newPost);
     //console.log("Creating a new post:", post);
-    const result = await addPost(newPost, res);
+    const result = await addPost(newPost, req, res);
     res.status(201).json({ message: "post created ", userId: result });
   } else {
     console.log("validation errors", errors);
     res.status(400).json({ message: "Failed to post", errors: errors.array() });
   }
-
-  /*  const newPost = req.body;
-  console.log("Creating a new post:", newPost);
-  const result = await addPost(newPost, res);
-  res.status(201).json({ userId: result });
-  //res.send("User added"); */
 };
 const modifyPost = async (req, res) => {
   const post = req.body;
+  const user = req.user;
+  console.log("Log for user", user);
   console.log("Posts: ", post);
   if (req.params.id) {
     post.id = req.params.id;
   }
 
-  const result = await editPost(post, res);
-  console.log(result);
+  const result = await editPost(post, user, res);
   if (result.affectedRows > 0) {
-    res.send("Post modified!!");
+    res.json({ message: "Post modified!!" });
   } else {
     res.sendStatus(502);
   }

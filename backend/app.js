@@ -15,6 +15,7 @@ const likeRoute = require("./routes/likeRoute");
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static("uploads"));
+app.use("/thumbnails", express.static("thumbnails"));
 app.use(cors());
 app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: true }));
@@ -22,8 +23,8 @@ app.use(express.json());
 app.use(passport.initialize());
 
 app.use("/auth", authRoute);
-app.use("/user", userRoute);
-app.use("/post", postRoute);
+app.use("/user", passport.authenticate("jwt", { session: false }), userRoute);
+app.use("/post", passport.authenticate("jwt", { session: false }), postRoute);
 //app.use("/comment", commentRoute);
 
 app.use(
@@ -32,7 +33,7 @@ app.use(
   commentRoute
 );
 app.use("/home", homePageRoute);
-app.use("/like", passport.authenticate("jwt", { session: false }), likeRoute);
+app.use("/post", likeRoute);
 // passport.authenticate("jwt", { session: false }),
 
 //It redirects from http to https on server
