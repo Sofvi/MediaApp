@@ -1,62 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../css/style.css" />
-    <title>Login</title>
-  </head>
-  <body>
-    <header>
-      <!-- Top title bar -->
-      <div class="topnav">
-        <h3>TravelShare</h3>
-      </div>
-    </header>
-    <main class="container">
-      <h1>Login</h1>
-      <form
-        id="login-form"
-        action="http://localhost:3000/auth/login"
-        method="post"
-      >
-        <!-- add action -->
-        <div class="loginInfo">
-          <label>
-            <input
-              type="text"
-              name="username"
-              placeholder="Enter Email"
-              minlength="3"
-              required
-            />
-          </label>
-          <label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter Password"
-              pattern="(?=.*[A-Z]).{8,}"
-              required
-            />
-          </label>
-          <button id="loginBtn" type="submit">Login</button>
-          <a href="register.html " id="regBtn">Register</a> <br />
-          <!-- add href -->
-          <a href="" id="anoBtn">Continue without an account.</a>
-          <!-- add href -->
-        </div>
-      </form>
-    </main>
-
-    <script src="../js/login.js"></script>
-    <script src="../js/serialize.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+          href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&display=swap"
+          rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script defer src="../js/login.js"></script>
+  <script defer src="../js/serialize.js"></script>
+  <title>Login</title>
+</head>
+<body class="login">
+<main class="container">
+  <h1>Login</h1>
+  <form
+          id="login-form"
+          action="http://localhost:3000/auth/login"
+          method="post">
+    <!-- add action -->
+    <div class="loginInfo">
+      <label>
+        <input
+                type="text"
+                name="username"
+                placeholder="Enter Email"
+                required
+        />
+      </label>
+      <label>
+        <input
+                type="password"
+                name="password"
+                placeholder="Enter Password"
+                required
+        />
+      </label>
+      <button id="loginBtn" type="submit">Sign in</button>
+      <a href="" id="regBtn">New account</a>
+      <br /><br /><br /><br /><br /><br />
+      <!-- add href -->
+      <a href="" id="anoBtn">Continue without an account.</a>
+      <!-- add href -->
+    </div>
+  </form>
+</main>
+<div class="bg-image"></div>
+</body>
 </html>
