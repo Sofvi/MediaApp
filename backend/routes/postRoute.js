@@ -9,11 +9,8 @@ const {
   modifyPost,
   removePost,
   getPostComments,
-
-  getPostLikes,
 } = require("../controllers/postController");
 const router = require("./authRoute");
-const { addLikeToPost } = require("../controllers/likeController");
 
 const fileFilter = (req, file, cb) => {
   const acceptedTypes = ["image/jpeg", "image/png", "image/gif"];
@@ -22,7 +19,6 @@ const fileFilter = (req, file, cb) => {
   } else {
     cb(null, false);
   }
-  //console.log(file);
 };
 const upload = multer({ dest: "uploads/", fileFilter });
 
@@ -43,14 +39,11 @@ router.post(
 router.put(
   "/:id",
   body("description").isLength({ min: 3 }).trim().escape(),
-  body("post_created").isDate(),
+  // body("post_created").isDate(),
   body("location").isLength({ min: 3 }).trim().escape(),
   modifyPost
 );
 router.get("/:id/comment", getPostComments);
-
-/* router.post("/like/:id",addLikeToPost);
-router.get("like/:id", getPostLikes); */
 router.delete("/:id", removePost);
 
 module.exports = router;

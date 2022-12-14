@@ -16,6 +16,7 @@
     />
     <link rel="stylesheet" href="../style.css" />
     <script defer src="../js/profile.js"></script>
+    <script defer src="../js/serialize.js"></script>
     <title>Profile</title>
   </head>
   <body>
@@ -23,14 +24,14 @@
       <!-- Top title bar -->
       <div class="topnavigation">
         <h3>TravelShare</h3>
-        <ul>
+        <ul id="logo">
           <li><i class="fa-solid fa-square-plus"></i></li>
         </ul>
       </div>
     </header>
-    <div class="contains">
-      <div class="userInfo">
-        <ul id ="list">
+    <div class="profileCard">
+      <div class="contains">
+        <div class="userInfo">
           <!-- js creates the userdata -->
           <div class="profileTopDiv">
             <img
@@ -38,50 +39,58 @@
               alt="Dog"
               class="cardProfileImg"
             />
+            <i class="fa-solid fa-circle-plus fa-lg"></i>
             <!-- popup -->
             <div id="myPopup" class="popup">
               <span class="closePopup">&times;</span>
               <div class="popup-content">
-                <form id="form" action="">
+                <form
+                  id="addProfilePicForm"
+                  action="http://localhost:3000/user"
+                  enctype="multipart/form-data"
+                >
                   <!--Add action here-->
                   <img id="output" /><br /><br />
                   <label for="choose-file">Select a file:</label><br /><br />
                   <input
                     type="file"
                     id="choose-file"
-                    name="choose-file"
+                    name="profile_pic"
                     accept="image/*"
                     onchange="loadFile(event)"
                   /><br /><br />
-                  <input type="submit" />
+                  <button type="submit" name="submit">Submit</button>
                 </form>
               </div>
             </div>
-            <h3>Profile Name</h3>
+            <div id="profileNameDiv">
+              <h3 id="profileName">Profile Name</h3>
+            </div>
           </div>
+        </div>
+        <div class="picsDiv">
+          <ul class="allPhotos">
+            <!-- hard-coded rn -->
+            <img
+              src="https://place-puppy.com/400x400"
+              alt="Dog"
+              class="profileImg"
+            />
+            <img
+              src="https://place-puppy.com/400x400"
+              alt="Dog"
+              class="profileImg"
+            />
+            <img
+              src="https://place-puppy.com/400x400"
+              alt="Dog"
+              class="profileImg"
+            />
+          </ul>
         </div>
       </div>
     </div>
-    <div class="pics">
-      <ul class="allPhotos">
-        <!-- hard-coded rn -->
-        <img
-          src="https://place-puppy.com/400x400"
-          alt="Dog"
-          class="profileImg"
-        />
-        <img
-          src="https://place-puppy.com/400x400"
-          alt="Dog"
-          class="profileImg"
-        />
-        <img
-          src="https://place-puppy.com/400x400"
-          alt="Dog"
-          class="profileImg"
-        />
-      </ul>
-    </div>
+
     <!-- Bottom nav bar -->
     <div class="bottomnav">
       <i class="fa-solid fa-house"></i>
