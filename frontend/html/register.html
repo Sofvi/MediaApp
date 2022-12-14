@@ -10,29 +10,33 @@
       href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
-    <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <script defer src="../js/serialize.js"></script>
+    <script defer src="../js/register.js"></script>
+    <title>Register</title>
   </head>
-  <body>
-    <header>
-      <!-- Top title bar -->
-      <div class="topnav">
-        <h3>TravelShare</h3>
-      </div>
-    </header>
+  <body class="register">
     <main class="container">
-      <h1>Login</h1>
-      <form
-        id="login-form"
-        action="http://localhost:3000/auth/login"
-        method="post"
-      >
-        <!-- add action -->
-        <div class="loginInfo">
+      <h1>Register</h1>
+      <div class="registerInfo">
+        <form
+          id="add-user-form"
+          action="http://localhost:3000/auth/register"
+          method="post"
+        >
+          <!-- add action -->
           <label>
             <input
               type="text"
               name="username"
+              placeholder="Enter Username"
+              required
+            />
+          </label>
+          <label>
+            <input
+              type="text"
+              name="email"
               placeholder="Enter Email"
               required
             />
@@ -45,16 +49,12 @@
               required
             />
           </label>
-          <button id="loginBtn" type="submit">Login</button>
-          <a href="register.html " id="regBtn">Register</a> <br />
-          <!-- add href -->
-          <a href="" id="anoBtn">Continue without an account.</a>
-          <!-- add href -->
-        </div>
-      </form>
+          <button id="registerBtn" type="submit">Sign up</button>
+        </form>
+          <a href="../html/login.html" id="regBtn">Login</a> <br /><br /><br /><br /><br /><br />
+          <a href="../html/feed.html" id="anoBtn">Continue without an account.</a>
+      </div>
     </main>
-
-    <script src="./js/login.js"></script>
-    <script src="./js/serialize.js"></script>
+    <div class="bg-image"></div>
   </body>
 </html>

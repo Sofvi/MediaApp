@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <script defer src="../js/profile.js"></script>
     <title>Profile</title>
 </head>
 <body>
@@ -21,12 +22,59 @@
             </ul>
         </div>
     </header>
-    <div class="userInfo">
-        <!-- js creates the userdata -->
+    <div class="contains">
+        <div class="userInfo">
+            <!-- js creates the userdata -->
+            <div class="profileTopDiv">
+                <img
+                        src="https://place-puppy.com/400x400"
+                        alt="Dog"
+                        class="cardProfileImg"
+                />
+                <!-- popup -->
+                <div id="myPopup" class="popup">
+                    <span class="closePopup">&times;</span>
+                    <div class="popup-content">
+                        <form id="form" action="">  <!--Add action here-->
+                            <img id="output"><br><br>
+                            <label for="choose-file">Select a file:</label><br><br>
+                            <input type="file" id="choose-file" name="choose-file" accept="image/*" onchange="loadFile(event)"><br><br>
+                            <input type="submit">
+                        </form>
+                    </div>
+                </div>
+                <h3>Profile Name</h3>
+            </div>
+        </div>
     </div>
     <div class="pics">
-        <ul id="picList">
-            <!-- js creates list here -->
+        <ul class="allPhotos">
+            <!-- hard-coded rn -->
+            <div class="imageList">
+                här är en image
+            </div>
+            <div class="imageList">
+                här är en image
+            </div>
+            <div class="imageList">
+                här är en image
+            </div>
+            <!--
+            <img
+                    src="https://place-puppy.com/400x400"
+                    alt="Dog"
+                    class="profileImg"
+            />
+            <img
+                    src="https://place-puppy.com/400x400"
+                    alt="Dog"
+                    class="profileImg"
+            />
+            <img
+                    src="https://place-puppy.com/400x400"
+                    alt="Dog"
+                    class="profileImg"
+            /> -->
         </ul>
     </div>
     <!-- Bottom nav bar -->

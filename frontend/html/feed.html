@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/feed.js"></script>
+    <script defer src="../js/feed.js"></script>
     <title>Feed</title>
 </head>
 <body>
@@ -17,28 +17,103 @@
         <!-- Top title bar -->
         <div class="topnavigation">
             <h3>TravelShare</h3>
-            <ul>
-                <li><i class="fa-solid fa-square-plus"></i></li>
-            </ul>
+                <i class="fa-solid fa-square-plus"></i>
+                <i class="fa-solid fa-right-to-bracket"></i>
         </div>
     </header>
     <div class="content">
         <ul id="picList">
             <!-- js creates list here -->
+            <!-- Just for looks now -->
+            <div class="card">
+                <div class="cardTopDiv">
+                    <img
+                            src="https://place-puppy.com/400x400"
+                            alt="Dog"
+                            class="cardProfileImg"
+                    />
+                    <div class="text-container">
+                        <h3>Profile Name</h3>
+                        <p id="location">location here</p>
+                    </div>
+                </div>
+                <img
+                        src="https://place-puppy.com/500x500"
+                        alt="Dog"
+                        style="width: 100%"
+                />
+                <div class="container">
+                    <div class="likes-comments">
+                        <i class="fa-regular fa-heart"></i>
+                        <i class="fa-regular fa-comment"></i>
+                    </div>
+                    <p class="likes"> 23 likes</p>
+                    <p class="description">description renders here</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cardTopDiv">
+                    <img
+                            src="https://place-puppy.com/400x400"
+                            alt="Dog"
+                            class="cardProfileImg"
+                    />
+                    <div class="text-container">
+                        <h3>Profile Name</h3>
+                        <p class="location">location here</p>
+                    </div>
+                </div>
+                <img
+                        src="https://place-puppy.com/500x500"
+                        alt="Dog"
+                        style="width: 100%"
+                />
+                <div class="container">
+                    <div class="likes-comments">
+                        <i class="fa-regular fa-heart"></i>
+                        <i class="fa-regular fa-comment"></i>
+                    </div>
+                    <p class="likes"> 23 likes</p>
+                    <p class="description">description renders here</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="cardTopDiv">
+                    <img
+                            src="https://place-puppy.com/400x400"
+                            alt="Dog"
+                            class="cardProfileImg"
+                    />
+                    <div class="text-container">
+                        <h3>Profile Name</h3>
+                        <p class="location">location here</p>
+                    </div>
+                </div>
+                <img
+                        src="https://place-puppy.com/500x500"
+                        alt="Dog"
+                        style="width: 100%"
+                />
+                <div class="container">
+                    <div class="likes-comments">
+                        <i class="fa-regular fa-heart"></i>
+                        <i class="fa-regular fa-comment"></i>
+                    </div>
+                    <p class="likes"> 23 likes</p>
+                    <p class="description">description renders here</p>
+                </div>
+            </div>
         </ul>
-        <!-- Just for looks now -->
-        <img src="https://place-puppy.com/300x400" style="padding: 28px" alt="pic">
-        <img src="https://place-puppy.com/300x300" style="padding: 28px" alt="pic">
-        <img src="https://place-puppy.com/300x400" style="padding: 28px" alt="pic">
-    </div>
     <!-- Bottom nav bar -->
     <div class="bottomnav">
         <i class="fa-solid fa-house"></i>
-        <label>
-            <input type="text" placeholder="Search..">
+        <form class="searchbar">
+            <label>
+                <input type="text" placeholder="Search..">
+            </label>
             <button type="submit"><i class="fa fa-search"></i></button>
-        </label>
+        </form>
         <i class="fa-solid fa-user"></i>
-    </div>
+    </div></div>
 </body>
 </html>
