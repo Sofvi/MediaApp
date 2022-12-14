@@ -3,6 +3,14 @@ const url = "http://localhost:3000";
 
 const addForm = document.querySelector("#addFormPost");
 
+const loadFile = function (event) {
+  const output = document.getElementById("output");
+  output.src = URL.createObjectURL(event.target.files[0]);
+  output.onload = function () {
+    URL.revokeObjectURL(output.src); // free memory
+  };
+};
+
 addForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(addForm);

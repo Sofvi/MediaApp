@@ -11,6 +11,14 @@ const user = JSON.parse(sessionStorage.getItem("user"));
 const id = getQParam("id");
 console.log(id);
 
+
+const loadFile = function (event) {
+  const output = document.getElementById("output");
+  output.src = URL.createObjectURL(event.target.files[0]);
+  output.onload = function () {
+    URL.revokeObjectURL(output.src); // free memory
+  };
+};
 // select existing html elements
 const modForm = document.querySelector("#edit-post-form");
 
