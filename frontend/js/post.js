@@ -1,5 +1,4 @@
-"use strict";
-const url = "http://localhost:3000";
+'use strict';
 
 const addForm = document.querySelector("#addFormPost");
 
@@ -31,6 +30,8 @@ addForm.addEventListener("submit", async (e) => {
   alert("Your post is created");
   location.href = "feed.html";
 });
+const homeBtn = document.querySelector('.fa-solid.fa-house');
+const profileBtn = document.querySelector('.fa-solid.fa-user');
 
 const loadFile = function(event) {
   const output = document.getElementById('output');
@@ -40,3 +41,14 @@ const loadFile = function(event) {
   };
 };
 
+// Move to home
+homeBtn.addEventListener('click', () => {
+  location.href = 'feed.html';
+  console.log('redirect to home');
+});
+
+// Move to profile
+profileBtn.addEventListener('click', () => {
+  location.href = 'profile.html';
+  console.log('redirect to feed');
+});

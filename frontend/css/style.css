@@ -17,12 +17,12 @@ p {
   padding: 16px;
   font-size: 16px;
   background-color: wheat;
-  font-family: "Julius Sans One", sans-serif;
+  font-family: 'Julius Sans One', sans-serif;
 }
 /* Login text */
 .container h1 {
   margin-top: 140px;
-  font-family: "Julius Sans One", sans-serif;
+  font-family: 'Julius Sans One', sans-serif;
   font-size: 50px;
   color: white;
 }
@@ -47,17 +47,16 @@ p {
   -webkit-filter: blur(2px);
 }
 /* Login form */
-.loginInfo input[type="text"],
-input[type="password"] {
+.loginInfo input[type=text], input[type=password] {
   width: 100%;
   margin-top: 10px;
   font-size: 22px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255, .2);
   font-family: "Archivo Narrow", serif;
   padding: 28px 20px 5px 20px;
   border: none;
-  border-bottom: 3px solid #949d6a;
+  border-bottom: 3px solid #949D6A;
 }
 .loginInfo input::placeholder {
   color: rgba(0, 0, 0, 0.79);
@@ -67,19 +66,18 @@ input[type="password"] {
 }
 /* Login button */
 #loginBtn {
-  background-color: #f6ca83;
+  background-color: #F6CA83;
   color: white;
   padding: 14px 20px;
   margin: 50px 0 20px;
   border: none;
   width: 100%;
-  font-family: "Archivo Narrow", sans-serif;
+  font-family: 'Archivo Narrow', sans-serif;
   font-size: 24px;
 }
-#regBtn,
-#anoBtn {
+#regBtn , #anoBtn {
   font-size: 20px;
-  font-family: "Archivo Narrow", sans-serif;
+  font-family: 'Archivo Narrow', sans-serif;
   text-decoration: none;
   color: white;
 }
@@ -88,17 +86,16 @@ input[type="password"] {
 }
 
 /***** REGISTER PAGE *****/
-.registerInfo input[type="text"],
-input[type="password"] {
+.registerInfo input[type=text], input[type=password] {
   width: 100%;
   margin-top: 10px;
   font-size: 22px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255, .2);
   font-family: "Archivo Narrow", serif;
   padding: 28px 20px 5px 20px;
   border: none;
-  border-bottom: 3px solid #949d6a;
+  border-bottom: 3px solid #949D6A;
 }
 .register .container {
   display: flex;
@@ -109,13 +106,13 @@ input[type="password"] {
   height: 100%;
 }
 #registerBtn {
-  background-color: #f6ca83;
+  background-color: #F6CA83;
   color: white;
   padding: 14px 20px;
   margin: 20px 0 20px;
   border: none;
   width: 100%;
-  font-family: "Archivo Narrow", sans-serif;
+  font-family: 'Archivo Narrow', sans-serif;
   font-size: 24px;
 }
 .registerInfo input::placeholder {
@@ -137,7 +134,7 @@ input[type="password"] {
   height: 55px;
   font-size: 20px;
   background-color: rgba(222, 221, 221, 0.8);
-  font-family: "Julius Sans One", sans-serif;
+  font-family: 'Julius Sans One', sans-serif;
 }
 .fa-square-plus {
   position: absolute;
@@ -145,13 +142,34 @@ input[type="password"] {
   font-size: 30px;
   color: #383735;
 }
-.fa-right-to-bracket {
+.fa-ellipsis-vertical {
   position: absolute;
   font-size: 30px;
   color: #383735;
   right: 10px;
   top: 10px;
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+#feedDrop {
+  display: none;
+  position: center;
+  background-color: rgb(222, 221, 221, 0.8);
+  z-index: 1;
+  margin-top: 2.7em;
+}
+.dropdown-content a {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 18px;
+  color: black;
+  padding: 12px 20px;
+  border: 1px solid #cccccc;
+  text-decoration: none;
+  display: block;
+}
+
 .topnavigation h3 {
   text-align: center;
   padding: 16px;
@@ -169,6 +187,10 @@ input[type="password"] {
     align-items: center;
     flex-direction: column;
     background: #cccccc;
+  background-image: url("../img/pic4.jpg");
+  background-size: auto 100%;
+  width: 100%;
+  background-repeat: no-repeat;
 }
 .bottomnav {
   display: flex;
@@ -181,8 +203,7 @@ input[type="password"] {
   bottom: 0;
   width: 100%;
 }
-.fa-house,
-.fa-user {
+.fa-house , .fa-user {
   font-size: 25px;
   padding: 17px;
   color: #383735;
@@ -231,7 +252,7 @@ input[type="password"] {
 }
 .text-container {
   padding: 10px;
-  font-family: "Archivo Narrow", sans-serif;
+  font-family: 'Archivo Narrow', sans-serif;
 }
 .likes-comments {
   display: flex;
@@ -262,7 +283,7 @@ input[type="password"] {
   list-style-type: none;
 }
 .description {
-  font-family: "Archivo Narrow", sans-serif;
+  font-family: 'Archivo Narrow', sans-serif;
   padding: 5px;
 }
 
@@ -305,16 +326,6 @@ input[type="password"] {
     padding-bottom: 8px;
 }
 
-.comment {
-    border-radius: 25%;
-}
-
-#picList {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    z-index: -1;
-    background-color: rgba(246, 202, 131, 0.2);
-}
 
 /***** POST PAGE *****/
 .addPost {
@@ -326,7 +337,7 @@ input[type="password"] {
   padding-top: 120px;
 }
 .addPost label {
-  font-family: "Archivo Narrow", sans-serif;
+  font-family: 'Archivo Narrow', sans-serif;
   font-size: 20px;
 }
 .addPost label input {
@@ -334,22 +345,18 @@ input[type="password"] {
   padding: 0.8rem;
   border: 2px solid #cccccc;
 }
-.addPost label input {
-    width: 100%;
-    padding: 0.4rem;
-}
 #output {
   max-width: 250px;
   margin: 0;
 }
-.addPost input[type="submit"] {
-  background-color: #f6ca83;
+.addPost input[type='submit'] {
+  background-color: #F6CA83;
   color: white;
   margin-top: -15px;
   padding: 5px;
   border: 2px solid #cccccc;
   width: 100%;
-  font-family: "Archivo Narrow", sans-serif;
+  font-family: 'Archivo Narrow', sans-serif;
   font-size: 22px;
 }
 
@@ -362,7 +369,7 @@ main #commentText {
   margin-top: 500px;
   margin-left: 8%;
 }
-#commentText input[type="text"] {
+#commentText input[type=text] {
   padding: 20px;
 }
 #sendCommentBtn {
@@ -384,7 +391,7 @@ main #commentText {
   width: 100%;
 }
 .cardDiv h3 {
-  font-family: "Archivo Narrow", sans-serif;
+  font-family: 'Archivo Narrow', sans-serif;
   padding: 10px;
 }
 .commentPopup {
@@ -618,7 +625,7 @@ main #commentText {
 .popup-content #form {
   position: relative;
   padding: 10%;
-  font-family: "Archivo Narrow", sans-serif;
+  font-family: 'Archivo Narrow', sans-serif;
 }
 .popup .fa-regular.fa-xmark {
   position: absolute;
@@ -631,8 +638,39 @@ main #commentText {
   z-index: -100;
 }
 
+/***** EDIT POST *****/
+.edit_container {
+  display: flex;
+  justify-content: center;
+  font-family: 'Archivo Narrow', sans-serif;
+}
+.edit_container h3 {
+  font-size: 20px;
+  font-family: 'Archivo Narrow', sans-serif;
+  margin-left: 70px;
+  width: fit-content;
+}
+.editPost {
+  margin-left: 19%;
+  margin-top: 30px;
+}
+.edit_container .form-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 40%;
+  padding: 0 20px 0 20px;
+}
+.edit_container label {
+  font-size: 26px;
+}
+.edit_container .light-border {
+  padding: 15px;
+  margin: 10px;
+}
+
 /***** MEDIA QUERY *****/
-@media (min-width: 481px) and (max-width: 1000px) {
+@media (min-width: 481px) and (max-width: 1000px){
   /* FEED */
   .card {
     max-width: 80%;
@@ -651,7 +689,7 @@ main #commentText {
     font-size: 30px;
     margin-left: 10%;
   }
-  .addPost label input[type="text"] {
+  .addPost label input[type='text'] {
     margin-top: 80px;
     padding: 30px;
     margin-right: 30px;
@@ -660,10 +698,11 @@ main #commentText {
   #output {
     max-width: 50%;
   }
-  .addPost input[type="submit"] {
+  .addPost input[type='submit'] {
     margin-top: 30px;
     padding: 10px;
     width: 100%;
     font-size: 28px;
   }
+
 }

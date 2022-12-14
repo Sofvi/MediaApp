@@ -29,6 +29,9 @@ const commentUl = document.querySelector('#commentUl');
 const commentBoxDiv = document.querySelector('.commentBoxDiv');
 const commentInput = document.querySelector("#commentInput");
 const sendButton = document.querySelector('.fa-solid.fa-paper-plane');
+const dropBtn = document.querySelector('.fa-solid.fa-ellipsis-vertical');
+const logout = document.querySelector('#logout');
+
 
 
 
@@ -114,99 +117,60 @@ const createFeedPost = (posts) => {
 
   });
 
-  // if (likeBtn.className === ".fa-regular fa-heart") {
-  //   likeBtn.className = "fa-solid fa-heart";
-  // } else {
-  //   likeBtn.className = "fa-regular fa-heart";
-  // }
-  // const editPost = document.querySelector(".fa.fa-edit");
-  // //console.log(editPost);
-  // editPost.addEventListener("click", () => {
-  //   alert("Redirecting to edit post");
-  //   location.href = "../html/edit-post.html?id=${post.id}";
-  // });
+// create cards
+const createFeedCards = (pics) => {
+  pics.forEach((pic) => {
+    const img = document.createElement('img');
+    img.src = url + '/' + pic.filename;
+    img.alt = pic.name;
+    img.classList.add('resp');
 
-  // editPost.addEventListener("click", () => {
-  //   alert("You are redirected to edit the post");
-  //   location.href = "../edit-post.html";
-  // });
+    const figure = document.createElement('figure').appendChild(img);
 
-  const likeButton = document.querySelectorAll(".fa-regular.fa-heart");
-  const totalLikes = document.querySelectorAll(".likes");
+    // add like button here //
 
-  likeButton.forEach((like, index) => {
-    like.addEventListener("click", async () => {
-      console.log("clicked", index, posts[index].id);
-      likeButton.className = "fa-solid.fa-heart";
+    // add comment button here //
 
-      try {
-        const fetchOptions = {
-          method: "POST",
-          headers: {
-            Authorization: "Bearer " + sessionStorage.getItem("token"),
-          },
-        };
-        const response = await fetch(
-          url + "/post/like/" + posts[index].id,
-          fetchOptions
-        );
-        //console.log(response);
-      } catch (e) {
-        console.log(e.message);
-      }
-    });
-  });
+    const  li = document.createElement('li');
+    li.classList.add('light-border');
 
-  //*Gets the total number of likes and render*/
-
-  totalLikes.forEach(async (like, index) => {
-    try {
-      const fetchOptions = {
-        method: "GET",
-        headers: {
-          Authorization: "Bearer " + sessionStorage.getItem("token"),
-        },
-      };
-      const response = await fetch(
-        url + "/post/like/" + posts[index].id,
-        fetchOptions
-      );
-      const json = await response.json();
-      likeCounter++;
-      //console.log("Likecounter: ", likeCounter);
-
-      totalLikes.innerHTML = "${likeCounter}";
-    } catch (e) {
-      console.log(e.message);
-    }
+    li.appendChild(figure);
+    ul.appendChild(li);
   });
 };
 
 //*AJAX to get the feedpost
 const getFeedPost = async () => {
   try {
-    const fetchOptions = {
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-      },
-    };
-
-    const response = await fetch(url + "/post", fetchOptions);
-    const feedPost = await response.json();
-    //console.log(feedPost);
-    createFeedPost(feedPost);
-    searchOption(feedPost);
+    const response = await fetch(url + '/feed');
+    const pics = await response.json();
+    createFeedCards(pics);
   } catch (e) {
     console.log(e.message);
   }
 };
-getFeedPost();
 
-//* SEARCH Functionality
 
-const searchBtn = document.querySelector("#searchBtn");
-const searchItem = document.querySelector("#search-item");
-const searchResult = document.querySelector("#search-result");
+
+// Dropdown menu
+dropBtn.addEventListener('click', () => {
+  document.getElementById('feedDrop').style.display = 'block';
+});
+
+// logout
+logout.addEventListener('click', () => {
+  sessionStorage.removeItem("token");
+  sessionStorage.removeItem("user");
+  alert("You have logged out");
+});
+
+// Hide dropdown
+window.onclick = function(event) {
+  if (!event.target.matches('.fa-solid.fa-ellipsis-vertical')) {
+    document.getElementById('feedDrop').style.display = 'none';
+  }
+};
+
 
 const createSearchCard = (searchPost) => {
   searchResult.innerHTML += `
@@ -239,15 +203,6 @@ const createSearchCard = (searchPost) => {
     </div>
     </div>`;
 };
-const searchOption = (feedSearch) => {
-  //*Function to handle the keyboard press
-
-  searchItem.addEventListener("keyup", (e) => {
-    if (e.keyCode === 13) {
-      e.preventDefault();
-      searchBtn.click();
-    }
-  });
 
   searchBtn.addEventListener("click", () => {
     searchResult.innerHTML = "";
