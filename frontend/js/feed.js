@@ -21,7 +21,7 @@ const userLogin = document.querySelector("#user-login");
 const profileBtn = document.querySelector(".fa-solid.fa-user");
 
 const likeBtn = document.querySelector(".fa-regular fa-heart");
-const commentBtn = document.querySelector(".fa-regular.fa-comment");
+const commentBtn = document.querySelectorAll("fa-regular fa-comment");
 const loginBtn = document.querySelector(".fa-right-to-bracket");
 const popup = document.getElementById("myPopup");
 const closeBtn = document.getElementsByClassName(".fa-regular.fa-xmark");
@@ -40,7 +40,7 @@ userLogin.addEventListener("click", () => {
     location.href = "../html/feed.html";
   }
 });
-/* 
+
 loginBtn.addEventListener("click", () => {
   location.href = "../html/login.html";
   console.log("redirect to login");
@@ -288,7 +288,7 @@ const displayComments = (comments) => {
       li.appendChild(div);
       div.appendChild(h3);
       div.appendChild(p);
-    if (parseUser.id == comment.user_id) {
+    if (parsedUser.id == comment.user_id) {
         parseUserId[parsedUser.id] = parsedUser.username;
         console.log(parseUserId);
         h3.textContent = parsedUser.username + ":";
@@ -381,10 +381,4 @@ const updateComments = async (postId) => {
 // Popup window
 commentBtn.onclick = function () {
   popup.style.display = "block";
-};
-
-// Close the popup window
-closeComments = () => {
-  popup.style.display = "none";
-  console.log("closing the popup");
 };

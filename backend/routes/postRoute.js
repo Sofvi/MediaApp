@@ -12,6 +12,7 @@ const {
 } = require("../controllers/postController");
 const router = require("./authRoute");
 
+
 const fileFilter = (req, file, cb) => {
   const acceptedTypes = ["image/jpeg", "image/png", "image/gif"];
   if (acceptedTypes.includes(file.mimetype)) {
