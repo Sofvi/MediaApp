@@ -10,6 +10,8 @@ const likeBtn = document.querySelector('.fa-regular.fa-heart');
 const commentBtn = document.querySelector('.fa-regular.fa-comment');
 const loginBtn = document.querySelector('.fa-right-to-bracket');
 
+const token = sessionStorage.getItem('token');
+const user = sessionStorage.getItem("user");
 
 // create cards
 const createFeedCards = (pics) => {
@@ -33,11 +35,14 @@ const createFeedCards = (pics) => {
   });
 };
 // Move to login if not logged in
-// TODO: ADD FUNCTION TO CHECK IF LOGGED IN
 loginBtn.addEventListener('click', () => {
-  location.href = '../html/login.html';
-  console.log('redirect to login')
-})
+  if (!user && !token) {
+    location.href = '../html/login.html';
+    console.log('redirect to login');
+  } else {
+    loginBtn.style.display = 'none';
+  }
+});
 // Move to profile
 profileBtn.addEventListener('click', () => {
   location.href = '../html/profile.html';
