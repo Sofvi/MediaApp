@@ -331,7 +331,7 @@ p {
 .addPost {
   display: flex;
   justify-content: center;
-  padding-top: 8rem;
+  padding-top: 5rem;
 }
 .addPost #form {
   position: relative;
