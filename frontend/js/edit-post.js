@@ -1,5 +1,9 @@
 "use strict";
 const url = "http://localhost:3000"; // change url when uploading to server
+
+const profileBtn = document.querySelector(".fa-solid.fa-user");
+const homeBtn = document.querySelector(".fa-solid.fa-house");
+
 // get query parameter
 const getQParam = (param) => {
   const queryString = window.location.search;
@@ -66,3 +70,17 @@ modForm.addEventListener("submit", async (evt) => {
 });
 
 getPost(id); // if regular user
+
+// Move to home
+homeBtn.addEventListener("click", () => {
+  location.href = "feed.html";
+  console.log("redirect to profile");
+});
+
+// Move to profile
+profileBtn.addEventListener('click', () => {
+  location.href = '../html/profile.html';
+  console.log('redirect to feed');
+});
+
+

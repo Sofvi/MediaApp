@@ -21,19 +21,10 @@ const userLogin = document.querySelector("#user-login");
 const profileBtn = document.querySelector(".fa-solid.fa-user");
 
 const likeBtn = document.querySelector(".fa-regular fa-heart");
-const commentBtn = document.querySelectorAll("fa-regular fa-comment");
-const loginBtn = document.querySelector(".fa-right-to-bracket");
-const popup = document.getElementById("myPopup");
-const closeBtn = document.getElementsByClassName(".fa-regular.fa-xmark");
-const commentUl = document.querySelector('#commentUl');
-const commentBoxDiv = document.querySelector('.commentBoxDiv');
-const commentInput = document.querySelector("#commentInput");
-const sendButton = document.querySelector('.fa-solid.fa-paper-plane');
+const commentBtn = document.querySelector(".fa-regular.fa-comment");
+
 const dropBtn = document.querySelector('.fa-solid.fa-ellipsis-vertical');
 const logout = document.querySelector('#logout');
-
-
-
 
 userLogin.addEventListener("click", () => {
   if (!user && !token) {
@@ -44,12 +35,12 @@ userLogin.addEventListener("click", () => {
   }
 });
 
-loginBtn.addEventListener("click", () => {
-  location.href = "../html/login.html";
-  console.log("redirect to login");
-});
 // Move to profile
 profileBtn.addEventListener("click", () => {
+  if (!sessionStorage.getItem("token") && !sessionStorage.getItem("user")) {
+    alert("Please login to post");
+    location.href = "../html/login.html";
+  }
   location.href = "../html/profile.html";
   console.log("redirect to feed");
 });
@@ -79,10 +70,10 @@ const createFeedPost = (posts) => {
     console.log(post);
     likeCounter = post.like_num;
     feed.innerHTML += `
-     <div class="card"">
+     <div class="card">
   <div class="cardTopDiv">
     <img
-              src="${url + "/profilePics/" + parsedUser.profile_pic}"
+              src="https://place-puppy.com/400x400"
               alt="Dog"
               class="cardProfileImg"
             />
@@ -103,7 +94,7 @@ const createFeedPost = (posts) => {
       <div class="container">
       <div class="likes-comments">
       <i  class="fa-regular fa-heart"></i>
-      <i  class="fa-regular fa-comment" id="${post.id}" onclick="goToComments(this.id)""></i>
+      <i  class="fa-regular fa-comment"></i>
       </div>
 
       <p class ="likes">Likes:  ${post.like_num}</>
@@ -114,70 +105,108 @@ const createFeedPost = (posts) => {
         post.id
       }"><i class="fa fa-edit" style="color: #aca891"></i> </a></div>
       </div>`;
-
   });
 
-// create cards
-const createFeedCards = (pics) => {
-  pics.forEach((pic) => {
-    const img = document.createElement('img');
-    img.src = url + '/' + pic.filename;
-    img.alt = pic.name;
-    img.classList.add('resp');
+  // if (likeBtn.className === ".fa-regular fa-heart") {
+  //   likeBtn.className = "fa-solid fa-heart";
+  // } else {
+  //   likeBtn.className = "fa-regular fa-heart";
+  // }
+  // const editPost = document.querySelector(".fa.fa-edit");
+  // //console.log(editPost);
+  // editPost.addEventListener("click", () => {
+  //   alert("Redirecting to edit post");
+  //   location.href = "../html/edit-post.html?id=${post.id}";
+  // });
 
-    const figure = document.createElement('figure').appendChild(img);
+  // editPost.addEventListener("click", () => {
+  //   alert("You are redirected to edit the post");
+  //   location.href = "../edit-post.html";
+  // });
 
-    // add like button here //
+  const likeButton = document.querySelectorAll(".fa-regular.fa-heart");
+  const totalLikes = document.querySelectorAll(".likes");
 
-    // add comment button here //
+  likeButton.forEach((like, index) => {
+    like.addEventListener("click", async () => {
+      console.log("clicked", index, posts[index].id);
+      likeButton.className = "fa-solid.fa-heart";
 
-    const  li = document.createElement('li');
-    li.classList.add('light-border');
+      try {
+        const fetchOptions = {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + sessionStorage.getItem("token"),
+          },
+        };
+        const response = await fetch(
+          url + "/post/like/" + posts[index].id,
+          fetchOptions
+        );
+        //console.log(response);
+      } catch (e) {
+        console.log(e.message);
+      }
+    });
+  });
 
-    li.appendChild(figure);
-    ul.appendChild(li);
+  //*Gets the total number of likes and render*/
+
+  totalLikes.forEach(async (like, index) => {
+    try {
+      const fetchOptions = {
+        method: "GET",
+        headers: {
+          Authorization: "Bearer " + sessionStorage.getItem("token"),
+        },
+      };
+      const response = await fetch(
+        url + "/post/like/" + posts[index].id,
+        fetchOptions
+      );
+      const json = await response.json();
+      likeCounter++;
+      //console.log("Likecounter: ", likeCounter);
+
+      totalLikes.innerHTML = "${likeCounter}";
+    } catch (e) {
+      console.log(e.message);
+    }
   });
 };
 
 //*AJAX to get the feedpost
 const getFeedPost = async () => {
   try {
-    const response = await fetch(url + '/feed');
-    const pics = await response.json();
-    createFeedCards(pics);
+    const fetchOptions = {
+      headers: {
+        Authorization: "Bearer " + sessionStorage.getItem("token"),
+      },
+    };
+
+    const response = await fetch(url + "/post", fetchOptions);
+    const feedPost = await response.json();
+    //console.log(feedPost);
+    createFeedPost(feedPost);
+    searchOption(feedPost);
   } catch (e) {
     console.log(e.message);
   }
 };
+getFeedPost();
 
+//* SEARCH Functionality
 
-
-// Dropdown menu
-dropBtn.addEventListener('click', () => {
-  document.getElementById('feedDrop').style.display = 'block';
-});
-
-// logout
-logout.addEventListener('click', () => {
-  sessionStorage.removeItem("token");
-  sessionStorage.removeItem("user");
-  alert("You have logged out");
-});
-
-// Hide dropdown
-window.onclick = function(event) {
-  if (!event.target.matches('.fa-solid.fa-ellipsis-vertical')) {
-    document.getElementById('feedDrop').style.display = 'none';
-  }
-};
-
+const searchBtn = document.querySelector("#searchBtn");
+const searchItem = document.querySelector("#search-item");
+const searchResult = document.querySelector("#search-result");
 
 const createSearchCard = (searchPost) => {
   searchResult.innerHTML += `
      <div class="card">
   <div class="cardTopDiv">
     <img
-              src="${url + "/profilePics/" + parsedUser.profile_pic}"
+              src="https://place-puppy.com/400x400"
               alt="Dog"
               class="cardProfileImg"
             />
@@ -195,14 +224,23 @@ const createSearchCard = (searchPost) => {
   <div class="container">
     <div class="likes-comments">
       <i id="like-btn" class="fa-regular fa-heart"></i>
-      <i id="comment-btn" class="fa-regular fa-comment" id="${searchPost.id}" onclick="goToComments(this.id)"></i>
+      <i id="comment-btn" class="fa-regular fa-comment"></i>
     </div>
-    <p class="likes">${searchPost.like_num}</p>
+    <p class="likes">Likes: ${searchPost.like_num}</p>
     <p class="description">${searchPost.description}</p>
     
     </div>
     </div>`;
 };
+const searchOption = (feedSearch) => {
+  //*Function to handle the keyboard press
+
+  searchItem.addEventListener("keyup", (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      searchBtn.click();
+    }
+  });
 
   searchBtn.addEventListener("click", () => {
     searchResult.innerHTML = "";
@@ -226,114 +264,21 @@ const createSearchCard = (searchPost) => {
   });
 };
 
-const parseUserId = {};
+// Dropdown menu
+dropBtn.addEventListener('click', () => {
+  document.getElementById('feedDrop').style.display = 'block';
+});
 
-// Display comments
-const displayComments = (comments) => {
-  commentUl.innerHTML = "";
-  console.log("Comments: ", comments);
-  comments.forEach((comment) => {
-    // create li with DOM methods
-      console.log("user id right");
-      console.log(comment);
-      const li = document.createElement("li");
-      const div = document.createElement("div");
-      const h3 = document.createElement("h3");
-      const p = document.createElement("p");
-      li.appendChild(div);
-      div.appendChild(h3);
-      div.appendChild(p);
-    if (parsedUser.id == comment.user_id) {
-        parseUserId[parsedUser.id] = parsedUser.username;
-        console.log(parseUserId);
-        h3.textContent = parsedUser.username + ":";
-        console.log("Commentor", parseUserId[comment.user_id]);
-      }
-      if (Object.values(parseUserId).includes(comment.user_id)) {
-        h3.textContent = parseUserId[comment.user_id] + ":";
-        console.log("Commentor", parseUserId[comment.user_id]);
-      }
-      p.textContent = comment.content;
-      commentUl.appendChild(li);
-  });
-};
+// logout
+logout.addEventListener('click', () => {
+  sessionStorage.removeItem("token");
+  sessionStorage.removeItem("user");
+  alert("You have logged out");
+});
 
-// Open comments and get postId
-const goToComments = async (postId) => {
-  popup.style.display = "block";
-  try {
-    const fetchOptions = {
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-      },
-    };
-    const response = await fetch(
-      url + "/comment/" + postId ,
-      fetchOptions
-    );
-    const comments = await response.json();
-    displayComments(comments);
-    console.log("response: ", comments);
-  } catch (e) {
-    console.log(e.message);
+// Hide dropdown
+window.onclick = function(event) {
+  if (!event.target.matches('.fa-solid.fa-ellipsis-vertical')) {
+    document.getElementById('feedDrop').style.display = 'none';
   }
-  console.log("Clicked post with id: ", postId);
-  givePostId(postId);
-  // Automatically scroll to bottom of comments and set input value empty
-  commentBoxDiv.scrollTop = commentBoxDiv.scrollHeight;
-  commentInput.value = "";
-};
-
-// Update comments
-const updateComments = async (postId) => {
-  popup.style.display = "block";
-  try {
-    const fetchOptions = {
-      headers: {
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-      },
-    };
-    const response = await fetch(
-      url + "/comment/" + postId ,
-      fetchOptions
-    );
-    const comments = await response.json();
-    displayComments(comments);
-    console.log("response: ", comments);
-  } catch (e) {
-    console.log(e.message);
-  }
-  console.log("Clicked post with id: ", postId);
-  // Automatically scroll to bottom of comments and set input value empty
-  commentBoxDiv.scrollTop = commentBoxDiv.scrollHeight;
-  commentInput.value = "";
-};
-
-  //  Give postId to submit comment form and submit
-  const givePostId = async (postId) => {
-
-  const addForm = document.querySelector('#addCommentForm');
-  addForm.addEventListener("submit", async (evt) => {
-    evt.preventDefault();
-    const data = serializeJson(addForm);
-    data["post_id"] = postId;
-    const fetchOptions = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + sessionStorage.getItem("token"),
-      },
-      body: JSON.stringify(data),
-    };
-  
-    const response = await fetch(url + "/comment", fetchOptions);
-    const json = await response.json();
-    console.log("comment response", json);
-    updateComments(postId);
-  });
-};
-
-// Popup window
-commentBtn.onclick = function () {
-  popup.style.display = "block";
 };

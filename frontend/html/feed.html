@@ -27,7 +27,14 @@
         <i id="addPost" class="fa-solid fa-square-plus"></i>
 
         <!-- Id to manipulate thorugh DOM-->
-        <i id="user-login" class="fa-solid fa-right-to-bracket"></i>
+        <!--<i class="fa-solid fa-right-to-bracket"></i>-->
+        <div class="dropdown">
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+          <div id="feedDrop" class="dropdown-content">
+            <a href="login.html" id="user-login">Login</a>
+            <a id="logout" href="login.html">Logout</a>
+          </div>
+        </div>
       </div>
       <!-- popup -->
       <div id="myPopup" class="commentPopup">
@@ -76,13 +83,12 @@
           <button id="searchBtn" type="submit">
             <i class="fa fa-search"></i>
           </button>
+          <i class="fa-solid fa-user"></i>
         </div>
-        <p class="likes"> 23 likes</p>
-        <p class="description">description renders here</p>
       </div>
     </div>
 
-    <script defer src="../js/feed.js"></script>
-    <script defer src="../js/serialize.js"></script>
+    <script src="../js/feed.js"></script>
+    <script src="../js/serialize.js"></script>
   </body>
 </html>
