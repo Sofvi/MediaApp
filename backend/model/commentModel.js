@@ -6,6 +6,7 @@ const getAllComments = async (res) => {
   try {
     const sql = "SELECT * FROM comment";
     const [rows] = await promisePool.query(sql);
+    console.log(rows);
     return rows;
   } catch (e) {
     console.error("error", e.message);
@@ -14,10 +15,10 @@ const getAllComments = async (res) => {
 };
 const getComment = async (id, res) => {
   try {
-    const sql = "SELECT * FROM comment WHERE id = ?"; //"SELECT * FROM posts WHERE id=" + id;
+    const sql = "SELECT * FROM comment WHERE post_id = ?"; //"SELECT * FROM posts WHERE id=" + id;
     const [rows] = await promisePool.query(sql, id);
     console.log(rows);
-    return rows[0];
+    return rows;
   } catch (e) {
     console.error("error", e.message);
     res.status(500).send(e.message);

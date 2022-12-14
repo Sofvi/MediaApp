@@ -10,6 +10,7 @@ const profileName = document.querySelector('#profileName');
 const img = document.querySelector('#postPic');
 const commentUl = document.querySelector('#commentUl');
 const addForm = document.querySelector('#addCommentForm');
+const sendButton = document.querySelector('.fa-solid.fa-paper-plane');
 
 // Get user data
 const user = JSON.parse(sessionStorage.getItem('user'));
@@ -25,6 +26,7 @@ const displayComments = (comments) => {
   comments.forEach((comment) => {
     // create li with DOM methods
       console.log("user id right");
+      console.log(comment);
       const li = document.createElement("li");
       const div = document.createElement("div");
       const h3 = document.createElement("h3");
@@ -64,7 +66,7 @@ const getPost = async () => {
 getPost();
 
 // AJAX call
-const getComment = async () => {
+/*const getComment = async () => {
   try {
     const fetchOptions = {
       headers: {
@@ -80,21 +82,28 @@ const getComment = async () => {
 };
 getComment();
 
-// submit comment form
-addForm.addEventListener('submit', async (evt) => {
-  evt.preventDefault();
-  const fd = new FormData(addForm);
-  const fetchOptions = {
-    method: 'POST',
-    headers: {
-      Authorization: 'Bearer ' + sessionStorage.getItem('token'),
-    },
-    body: fd,
-  };
-  const response = await fetch(url + '/comment', fetchOptions);
-  const json = await response.json();
-  alert(json.message);
-});
+  // submit comment form
+  addForm.addEventListener("submit", async (evt) => {
+    evt.preventDefault();
+    const data = serializeJson(addForm);
+    const fetchOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: 'Bearer ' + sessionStorage.getItem('token'),
+      },
+      body: JSON.stringify(data),
+    };
+  
+    const response = await fetch(url + "/comment", fetchOptions);
+    const json = await response.json();
+    console.log("comment response", json);
+      alert(json.message);
+  });
+
+/*sendButton.addEventListener('click', () => {
+console.log("button clicked")
+});*/
 
 // Move to home
 homeBtn.addEventListener('click', () => {

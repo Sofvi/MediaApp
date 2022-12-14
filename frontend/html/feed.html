@@ -29,6 +29,29 @@
         <!-- Id to manipulate thorugh DOM-->
         <i id="user-login" class="fa-solid fa-right-to-bracket"></i>
       </div>
+      <!-- popup -->
+      <div id="myPopup" class="commentPopup">
+        <span class="closePopup">&times;</span>
+        <div class="commentPopupContent">
+            <img id="output" /><br /><br />
+            <div class="commentBoxDiv">
+              <ul id="commentUl">
+                  <li>
+                      <div>
+                          <h3></h3>
+                          <p></p>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+            <div class="commentDiv">
+              <form action="http://localhost:3000/comment" enctype="multipart/form-data" method="post" class="light-border"
+               id="addCommentForm">                            
+                  <input id="commentInput" type="text" name="content" placeholder="Comment here..." />
+                  <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>              
+                </form>
+        </div>
+      </div>
     </header>
     <div class="content">
       <div class="feed-list" id="picList">
@@ -138,6 +161,7 @@
       </div>
     </div>
 
-    <script src="../js/feed.js"></script>
+    <script defer src="../js/feed.js"></script>
+    <script defer src="../js/serialize.js"></script>
   </body>
 </html>

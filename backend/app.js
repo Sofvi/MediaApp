@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const app = express();
 const cors = require("cors");
 const passport = require("./utils/passport");
+const bodyParser = require('body-parser')
 
 //Routes
 const userRoute = require("./routes/userRoute");
@@ -22,6 +23,9 @@ app.use(morgan("tiny"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(passport.initialize());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 app.use("/auth", authRoute);
 app.use("/user", passport.authenticate("jwt", { session: false }), userRoute);

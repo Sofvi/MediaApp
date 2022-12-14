@@ -250,6 +250,8 @@ input[type="password"] {
   border-radius: 25%;
 }
 #picList {
+  display: flex;
+  flex-direction: column-reverse;
   z-index: -1;
   background-image: url("../img/pic4.jpg");
   background-size: auto 100%;
@@ -379,23 +381,87 @@ main #commentText {
 }
 .cardDiv {
   padding: 4rem 0.5rem;
+  width: 100%;
 }
 .cardDiv h3 {
   font-family: "Archivo Narrow", sans-serif;
   padding: 10px;
 }
+.commentPopup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.commentPopupContent {
+  margin-top: 23rem;
+  margin-left: 10%;
+  padding: 4px;
+  background-color: white;
+  display: block;
+  width: 80%;
+  height: 40%;
+  border: 2px solid #cccccc;
+  border-radius: 6px;
+}
+.commentPopup .closePopup {
+  position: absolute;
+  top: 23rem;
+  margin-left: 80%;
+  color: #cccccc;
+  font-size: 42px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 100;
+}
+.commentBoxDiv {
+  font-family: "Archivo Narrow", sans-serif;
+  height: 13rem;
+  overflow: hidden;
+  border: 1px;
+  overflow: scroll;
+  border-top: 2px solid #cccccc;
+  border-bottom: 2px solid #cccccc;
+}
+.commentBoxDiv::-webkit-scrollbar {
+  display: none;
+}
+#commentUl {
+  list-style-type: none;
+  padding: 0;
+}
 .commentDiv {
   display: flex;
   flex-direction: row;
+  margin: 4px;
+}
+.commentDiv form {
+  width: 100%;
 }
 
 .commentDiv input {
-  width: 100%;
-  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px 0 0 20px;
+  box-shadow: 0 3px #818181;
+  height: 35px;
+  font-size: 17px;
 }
-
-.commentDiv i {
-  padding: 8px;
+.commentDiv button {
+  border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-left: none;
+    box-shadow: 1px 3px #818181;
+    margin-left: -8px;
+    font-size: 17px;
+    background-color: white;
+    height: 35px;
+    width: 35px;
+    border-radius: 0 20px 20px 0;
 }
 .closeComment {
   position: absolute;
@@ -536,14 +602,25 @@ main #commentText {
   display: block;
   width: 90%;
   height: 75%;
+  border: 2px solid #cccccc;
   border-radius: 6px;
+}
+.popup .closePopup {
+  position: absolute;
+  top: 5rem;
+  margin-left: 85%;
+  color: #cccccc;
+  font-size: 42px;
+  font-weight: bold;
+  transition: 0.3s;
+  z-index: 100;
 }
 .popup-content #form {
   position: relative;
   padding: 10%;
   font-family: "Archivo Narrow", sans-serif;
 }
-.popup .closePopup {
+.popup .fa-regular.fa-xmark {
   position: absolute;
   top: 80px;
   right: 32px;
@@ -551,7 +628,7 @@ main #commentText {
   font-size: 42px;
   font-weight: bold;
   transition: 0.3s;
-  z-index: 100;
+  z-index: -100;
 }
 
 /***** MEDIA QUERY *****/

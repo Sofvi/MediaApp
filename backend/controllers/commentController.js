@@ -12,10 +12,10 @@ const getComments = async (req, res) => {
   res.json(posts);
 };
 const getCommentById = async (req, res) => {
-  console.log(req.params.id);
+  console.log("post_id", req.params.id);
   const commentId = req.params.id;
   const comment = await getComment(commentId, res);
-  console.log(comment);
+  //console.log(comment);
 
   if (comment) {
     res.json(comment);
@@ -25,6 +25,12 @@ const getCommentById = async (req, res) => {
 };
 const createComment = async (req, res) => {
   const newComment = req.body;
+  newComment.user_id = req.user.id;
+  //newComment.post_id = req.
+  console.log("body: ", req.body);
+  console.log("content", req.body.content);
+  console.log("userId", req.user.id);
+  console.log("postId", req.body.post_id);
   console.log("Creating a new comment:", newComment);
   const result = await addComment(newComment, res);
   res.status(201).json({ userId: result });
