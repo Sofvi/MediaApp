@@ -173,39 +173,39 @@ const createFeedPost = (posts) => {
   });
 };
 // Move to login if not logged in
-loginBtn.addEventListener('click', () => {
+loginBtn.addEventListener("click", () => {
   if (!user && !token) {
-    location.href = '../html/login.html';
+    location.href = "../html/login.html";
   } else {
-    loginBtn.style.display = 'none';
+    loginBtn.style.display = "none";
   }
 });
 
 // Move to profile
-profileBtn.addEventListener('click', () => {
-  location.href = '../html/profile.html';
-  console.log('redirect to feed');
+profileBtn.addEventListener("click", () => {
+  location.href = "../html/profile.html";
+  console.log("redirect to feed");
 });
 
-// Move to post
-postBtn.addEventListener('click', () => {
-  location.href = '../html/post.html';
-  console.log('redirect to post');
-});
+// // Move to post
+// postBtn.addEventListener('click', () => {
+//   location.href = '../html/post.html';
+//   console.log('redirect to post');
+// });
 
-likeBtn.addEventListener('click', () => {
-  if (likeBtn.className === '.fa-regular fa-heart') {
-    likeBtn.className = 'fa-solid fa-heart';
-  } else {
-    likeBtn.className = 'fa-regular fa-heart';
-    console.log('like clicked');
-  }
-});
+// likeBtn.addEventListener('click', () => {
+//   if (likeBtn.className === '.fa-regular fa-heart') {
+//     likeBtn.className = 'fa-solid fa-heart';
+//   } else {
+//     likeBtn.className = 'fa-regular fa-heart';
+//     console.log('like clicked');
+//   }
+// });
 
-commentBtn.addEventListener('click', () => {
-  location.href = '../html/comment.html';
-  console.log('redirect to comment');
-});
+// commentBtn.addEventListener('click', () => {
+//   location.href = '../html/comment.html';
+//   console.log('redirect to comment');
+// });
 
 //*AJAX to get the feedpost
 const getFeedPost = async () => {
