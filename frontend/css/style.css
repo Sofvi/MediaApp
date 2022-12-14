@@ -138,13 +138,34 @@
   font-size: 30px;
   color: #383735;
 }
-.fa-right-to-bracket {
+.fa-ellipsis-vertical {
   position: absolute;
   font-size: 30px;
   color: #383735;
   right: 10px;
   top: 10px;
 }
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+#feedDrop {
+  display: none;
+  position: center;
+  background-color: rgb(222, 221, 221, 0.8);
+  z-index: 1;
+  margin-top: 2.7em;
+}
+.dropdown-content a {
+  font-family: 'Archivo Narrow', sans-serif;
+  font-size: 18px;
+  color: black;
+  padding: 12px 20px;
+  border: 1px solid #cccccc;
+  text-decoration: none;
+  display: block;
+}
+
 .topnavigation h3 {
   text-align: center;
   padding: 16px;
@@ -434,6 +455,36 @@ ul {
   transition: 0.3s;
 }
 
+/***** EDIT POST *****/
+.edit_container {
+  display: flex;
+  justify-content: center;
+  font-family: 'Archivo Narrow', sans-serif;
+}
+.edit_container h3 {
+  font-size: 20px;
+  font-family: 'Archivo Narrow', sans-serif;
+  margin-left: 70px;
+  width: fit-content;
+}
+.editPost {
+  margin-left: 19%;
+  margin-top: 30px;
+}
+.edit_container .form-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 40%;
+  padding: 0 20px 0 20px;
+}
+.edit_container label {
+  font-size: 26px;
+}
+.edit_container .light-border {
+  padding: 15px;
+  margin: 10px;
+}
 
 /***** MEDIA QUERY *****/
 @media (min-width: 481px) and (max-width: 1000px){

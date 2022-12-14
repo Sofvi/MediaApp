@@ -8,7 +8,8 @@ const profileBtn = document.querySelector('.fa-solid.fa-user');
 const postBtn = document.querySelector('.fa-solid.fa-square-plus');
 const likeBtn = document.querySelector('.fa-regular.fa-heart');
 const commentBtn = document.querySelector('.fa-regular.fa-comment');
-const loginBtn = document.querySelector('.fa-right-to-bracket');
+const dropBtn = document.querySelector('.fa-solid.fa-ellipsis-vertical');
+//const loginBtn = document.querySelector('.fa-right-to-bracket');
 
 const token = sessionStorage.getItem('token');
 const user = sessionStorage.getItem("user");
@@ -34,6 +35,7 @@ const createFeedCards = (pics) => {
     ul.appendChild(li);
   });
 };
+/*
 // Move to login if not logged in
 loginBtn.addEventListener('click', () => {
   if (!user && !token) {
@@ -43,6 +45,8 @@ loginBtn.addEventListener('click', () => {
     loginBtn.style.display = 'none';
   }
 });
+
+ */
 // Move to profile
 profileBtn.addEventListener('click', () => {
   location.href = '../html/profile.html';
@@ -77,6 +81,18 @@ const getPics = async () => {
     createFeedCards(pics);
   } catch (e) {
     console.log(e.message);
+  }
+};
+
+// Dropdown menu
+dropBtn.addEventListener('click', () => {
+  document.getElementById('feedDrop').style.display = 'block';
+});
+
+// Hide dropdown
+window.onclick = function(event) {
+  if (!event.target.matches('.fa-solid.fa-ellipsis-vertical')) {
+    document.getElementById('feedDrop').style.display = 'none';
   }
 };
 
