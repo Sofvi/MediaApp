@@ -9,7 +9,7 @@ const postBtn = document.querySelector('.fa-solid.fa-square-plus');
 const likeBtn = document.querySelector('.fa-regular.fa-heart');
 const commentBtn = document.querySelector('.fa-regular.fa-comment');
 const dropBtn = document.querySelector('.fa-solid.fa-ellipsis-vertical');
-//const loginBtn = document.querySelector('.fa-right-to-bracket');
+const logout = document.querySelector('#logout');
 
 const token = sessionStorage.getItem('token');
 const user = sessionStorage.getItem("user");
@@ -35,18 +35,7 @@ const createFeedCards = (pics) => {
     ul.appendChild(li);
   });
 };
-/*
-// Move to login if not logged in
-loginBtn.addEventListener('click', () => {
-  if (!user && !token) {
-    location.href = '../html/login.html';
-    console.log('redirect to login');
-  } else {
-    loginBtn.style.display = 'none';
-  }
-});
 
- */
 // Move to profile
 profileBtn.addEventListener('click', () => {
   location.href = '../html/profile.html';
@@ -87,6 +76,13 @@ const getPics = async () => {
 // Dropdown menu
 dropBtn.addEventListener('click', () => {
   document.getElementById('feedDrop').style.display = 'block';
+});
+
+// logout
+logout.addEventListener('click', () => {
+  sessionStorage.removeItem("token");
+  sessionStorage.removeItem("user");
+  alert("You have logged out");
 });
 
 // Hide dropdown
