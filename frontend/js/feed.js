@@ -50,6 +50,12 @@ window.onclick = function(event) {
   }
 };
 
+// Close Popup
+const closePopup = function () {
+  popup.style.display = "none";
+  console.log("clicked");
+} 
+
 userLogin.addEventListener("click", () => {
   if (!user && !token) {
     alert("You need to log in to post!!");

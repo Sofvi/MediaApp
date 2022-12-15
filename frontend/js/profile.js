@@ -49,13 +49,6 @@ const createPictureCards = (pics) => {
   });
 };
 
-/*
-if( ul.length === 0) {
-  const h2 = document.createElement("h2");
-  ul.appendChild(h2);
-  h2.innerText = "No posts yet. Start posting!";
-}*/
-
 // AJAX call for posts
 const getPic = async () => {
   try {
@@ -104,7 +97,7 @@ addFormProfilePicForm.addEventListener('submit', async (evt) => {
   const response = await fetch(url + '/user/' + user.id, fetchOptions);
   const json = await response.json();
   alert(json.message);
-  location.href = 'profile.html';
+  location.href = '../html/profile.html';
 });
 
 
@@ -130,6 +123,10 @@ closeBtn.onclick = function () {
   popup.style.display = "none";
   console.log("closing the popup");
 };
+
+const closePopup = function () {
+  popup.style.display = "none";
+} 
 
 // Loading the preview picture
 const loadFile = function (event) {
