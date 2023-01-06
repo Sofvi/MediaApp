@@ -56,6 +56,7 @@ JWT_SECRET=
 const url = 'http://localhost:3000';
 ```
 - Use frontend's html file login.html to run the application
+- You get the best experience while using the application on mobile
 
 ## Contributors
 - [Binod Panta](https://github.com/frozenfi/)
